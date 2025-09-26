@@ -1,15 +1,18 @@
 import { useState } from 'react'
 import WorkCard from './components/WorkCard'
+import testeImg from './assets/teste.png';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <div className='text-center'>
-        <WorkCard />
-      </div>
       <h1>Vite + React</h1>
+      <WorkCard
+          imageUrl={testeImg}
+          title='Test'
+          description='This is a test description'
+      />
       <div className="card text-center">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
