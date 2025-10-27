@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [react(),
     tailwindcss()
   ],
+  base: '/portifolio/',
   server: {
     port: 3016,
     open: true,
