@@ -1,29 +1,21 @@
-import { useState } from 'react'
-import WorkCard from './components/WorkCard'
-import testeImg from './assets/teste.png';
+import About from './sessions/About';
+import Contact from './sessions/Contact';
+import Header from './sessions/Header';
+import Hero from './sessions/Hero';
+import Projects from './sessions/Projects';
+import Services from './sessions/Services';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <h1>Vite + React</h1>
-      <WorkCard
-          imageUrl={testeImg}
-          title='Test'
-          description='This is a test description'
-      />
-      <div className="card text-center">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <div className='container mx-auto'>
+        <Header/>
+        <Hero/>
+        <Services/>
+        <Projects/>
+        <About/>
+        <Contact/>
       </div>
-      <p className="read-the-docs text-center">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }

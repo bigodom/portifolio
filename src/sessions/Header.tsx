@@ -1,0 +1,137 @@
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+
+export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setIsMenuOpen(false);
+    }
+  };
+
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <div className="flex items-center">
+            <span className="text-2xl font-bold text-primary" data-testid="text-logo">
+              Maltech
+            </span>
+          </div>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            <button
+              onClick={() => scrollToSection("inicio")}
+              className="text-foreground hover:text-primary transition-colors pointer"
+              data-testid="link-inicio"
+            >
+              Início
+            </button>
+            <button
+              onClick={() => scrollToSection("servicos")}
+              className="text-foreground hover:text-primary transition-colors"
+              data-testid="link-servicos"
+            >
+              Serviços
+            </button>
+            <button
+              onClick={() => scrollToSection("trabalhos")}
+              className="text-foreground hover:text-primary transition-colors"
+              data-testid="link-trabalhos"
+            >
+              Trabalhos
+            </button>
+            <button
+              onClick={() => scrollToSection("sobre")}
+              className="text-foreground hover:text-primary transition-colors"
+              data-testid="link-sobre"
+            >
+              Sobre
+            </button>
+            <button
+              onClick={() => scrollToSection("contato")}
+              className="text-foreground hover:text-primary transition-colors"
+              data-testid="link-contato"
+            >
+              Contato
+            </button>
+          </nav>
+
+          {/* CTA Button and Theme Toggle */}
+          <div className="hidden md:flex items-center space-x-4">
+            <button 
+              onClick={() => scrollToSection("contato")}
+              data-testid="button-cta"
+            >
+              Solicitar Orçamento
+            </button>
+          </div>
+
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden"
+            data-testid="button-menu-toggle"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden border-t" data-testid="menu-mobile">
+            <nav className="py-4 space-y-4">
+              <button
+                onClick={() => scrollToSection("inicio")}
+                className="block w-full text-left text-foreground hover:text-primary transition-colors"
+                data-testid="link-inicio-mobile"
+              >
+                Início
+              </button>
+              <button
+                onClick={() => scrollToSection("servicos")}
+                className="block w-full text-left text-foreground hover:text-primary transition-colors"
+                data-testid="link-servicos-mobile"
+              >
+                Serviços
+              </button>
+              <button
+                onClick={() => scrollToSection("trabalhos")}
+                className="block w-full text-left text-foreground hover:text-primary transition-colors"
+                data-testid="link-trabalhos-mobile"
+              >
+                Trabalhos
+              </button>
+              <button
+                onClick={() => scrollToSection("sobre")}
+                className="block w-full text-left text-foreground hover:text-primary transition-colors"
+                data-testid="link-sobre-mobile"
+              >
+                Sobre
+              </button>
+              <button
+                onClick={() => scrollToSection("contato")}
+                className="block w-full text-left text-foreground hover:text-primary transition-colors"
+                data-testid="link-contato-mobile"
+              >
+                Contato
+              </button>
+              <button 
+                className="w-full mt-4"
+                onClick={() => scrollToSection("contato")}
+                data-testid="button-cta-mobile"
+              >
+                Solicitar Orçamento
+              </button>
+            </nav>
+          </div>
+        )}
+      </div>
+    </header>
+  );
+}
