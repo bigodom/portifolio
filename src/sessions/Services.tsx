@@ -1,5 +1,6 @@
 import { Code, Zap, BarChart3, Monitor } from "lucide-react";
 import SimpleCard from "../components/SimpleCard";
+import { motion } from "framer-motion";
 
 export default function Services() {
   const services = [
@@ -41,14 +42,20 @@ export default function Services() {
             {services.map((value, index) => {
                 const IconComponent = value.icon;
                 return (
-                    <>
+                    <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: index * 0.2 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        >
                         <SimpleCard
                             key={index}
                             icon={IconComponent}
                             title={value.title}
                             description={value.description}
                         />
-                    </>
+                    </motion.div>
                 );
             })}
         </div>

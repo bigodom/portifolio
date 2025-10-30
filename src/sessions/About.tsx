@@ -1,5 +1,6 @@
 import { CheckCircle, Users, Target, Lightbulb } from "lucide-react";
 import SimpleCard from "../components/SimpleCard";
+import { motion } from "framer-motion";
 
 export default function About() {
     const values = [
@@ -69,14 +70,19 @@ export default function About() {
                         {values.map((value, index) => {
                             const IconComponent = value.icon;
                             return (
-                                <>
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                                    viewport={{ once: true, amount: 0.3 }}>
                                     <SimpleCard
                                         key={index}
                                         icon={IconComponent}
                                         title={value.title}
                                         description={value.description}
                                     />
-                                </>
+                                </motion.div>
                             );
                         })}
                     </div>
