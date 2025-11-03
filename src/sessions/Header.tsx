@@ -83,9 +83,13 @@ export default function Header() {
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden border-t" data-testid="menu-mobile">
-            <nav className="py-4 space-y-4">
+        <div 
+          className={`md:hidden fixed inset-x-0 top-16 bg-background/95 backdrop-blur-sm transition-all duration-300 ${
+            isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+          }`} 
+          data-testid="menu-mobile"
+        >
+            <nav className="py-4 space-y-4 px-4 border-t">
               <button
                 onClick={() => scrollToSection("inicio")}
                 className="block w-full text-left text-foreground hover:text-primary transition-colors"
@@ -129,8 +133,7 @@ export default function Header() {
                 Solicitar Orçamento
               </button>
             </nav>
-          </div>
-        )}
+        </div>
       </div>
     </header>
   );

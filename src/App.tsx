@@ -8,7 +8,7 @@ import Services from './sessions/Services';
 function App() {
   return (
     <>
-      <div className='container mx-auto'>
+      <div className='mx-auto'>
         <Header/>
         <Hero/>
         <Services/>
