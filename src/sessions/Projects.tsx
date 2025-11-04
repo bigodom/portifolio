@@ -5,45 +5,48 @@ import bi_gestao_frotas from '../assets/bi_gestao_frotas.png'
 import almoxarifado from '../assets/almoxarife.png'
 import lojinha from '../assets/lojinha.png'
 import ponto from '../assets/ponto.png'
+import { useState } from "react"
+import { X } from "lucide-react";
 
 function Projects() {
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
     const values = [
         {
-            image: system_monitor,
-            title: "Sistema de Monitoramento de Sistemas",
-            description: "Plataforma de monitoramento em tempo real para servidores e aplicações, com alertas personalizados e dashboards intuitivos.",
-            technologies: ["React", "TypeScript", "Node.js", "Grafana", "Prometheus"]
-        },
-        {
             image: gestao_frotas,
-            title: "Sistema de Gestão de Frotas",
+            title: "Gestão de Frotas",
             description: "Plataforma completa para controle de veículos, manutenção e consumo de combustível em tempo real.",
-            technologies: ["React", "TypeScript", "Node.js", "Prisma", "Tailwind"]
+            technologies: ["React", "TypeScript", "Node.js", "Postgresql", "Tailwind"]
         },
         {
             image: almoxarifado,
-            title: "Sistema de Controle de Almoxarifado",
-            description: "Plataforma completa para controle de veículos, manutenção e consumo de combustível em tempo real.",
-            technologies: ["React", "TypeScript", "Node.js", "Prisma", "Tailwind"]
+            title: "Controle de Estoque para Almoxarifado",
+            description: "Controle de entrada de suprimentos e saída por funcionário.",
+            technologies: ["React", "TypeScript", "Node.js", "Prisma", "Bootstrap"]
         },
         {
             image: lojinha,
-            title: "Sistema de Vendas",
-            description: "Plataforma completa para controle de veículos, manutenção e consumo de combustível em tempo real.",
-            technologies: ["React", "TypeScript", "Node.js", "Prisma", "Tailwind"]
+            title: "Frente PDV",
+            description: "Frende de venda PDV online com controle de estoque, saída, impressão de cupom e dashboard integrado.",
+            technologies: ["React", "TypeScript", "Fast API", "SQLAlchemy", "Bootstrap"]
         },
         {
             image: ponto,
-            title: "Sistema Gerador de Folhas de Ponto Manual",
-            description: "Plataforma completa para controle de veículos, manutenção e consumo de combustível em tempo real.",
-            technologies: ["React", "TypeScript", "Node.js", "Prisma", "Tailwind"]
+            title: "Gerador e Controlador de Folhas de Ponto Manual",
+            description: "Sistema para criação e controle de folhas de ponto manual.",
+            technologies: ["React", "TypeScript", "Node.js", "Postgresql", "Tailwind"]
         },
         {
             image: bi_gestao_frotas,
             title: "Sistema de Gestão de Frotas",
             description: "Plataforma completa para controle de veículos, manutenção e consumo de combustível em tempo real.",
             technologies: ["React", "TypeScript", "Node.js", "Prisma", "Tailwind"]
+        },
+        {
+            image: system_monitor,
+            title: "Painel de Monitoramento de Sistemas",
+            description: "Painel de monitoramento em tempo real para servidores e aplicações, com alertas personalizados e dashboards intuitivos.",
+            technologies: ["React", "TypeScript", "Node.js", "Grafana", "Prometheus"]
         },
     ];
     return (
@@ -63,20 +66,45 @@ function Projects() {
                         Conheça alguns dos projetos que desenvolvemos para nossos clientes
                     </p>
                 </div>
-                <div className='flex justify-between flex-wrap items-center justify-center'>
+                <div className='flex flex-wrap items-center gap-8 justify-center'>
                     {values.map((project, index) => (
-                        <div key={index} className="w-1/2 p-4 w-100">
+                        <div key={index} className="p-4 w-100">
                             <ProjectCard
                                 image={project.image}
                                 title={project.title}
                                 description={project.description}
                                 technologies={project.technologies}
+                                onImageClick={() => setSelectedImage(project.image)}
                             />
                         </div>
                     ))}
 
                 </div>
             </section>
+            {/* Modal (menu suspenso) */}
+            {selectedImage && (
+                <div
+                    className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50"
+                    onClick={() => setSelectedImage(null)}
+                >
+                    <div
+                        className="relative bg-white rounded-lg shadow-lg max-w-3xl w-full mx-4 p-4"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <button
+                            onClick={() => setSelectedImage(null)}
+                            className="absolute top-3 right-3 text-gray-500 hover:text-gray-800"
+                        >
+                            <X size={24} />
+                        </button>
+                        <img
+                            src={selectedImage}
+                            alt="Imagem do projeto"
+                            className="rounded-lg w-full h-auto object-contain"
+                        />
+                    </div>
+                </div>
+            )}
         </>
     )
 }

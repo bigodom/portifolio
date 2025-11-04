@@ -27,7 +27,7 @@ export default function Services() {
   ];
 
   return (
-    <section id="servicos" className="py-24 bg-secondary/30">
+    <section id="servicos" className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4" data-testid="text-services-title">

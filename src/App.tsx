@@ -1,5 +1,6 @@
 import About from './sessions/About';
 import Contact from './sessions/Contact';
+import Footer from './sessions/Footer';
 import Header from './sessions/Header';
 import Hero from './sessions/Hero';
 import Projects from './sessions/Projects';
@@ -15,6 +16,7 @@ function App() {
         <Projects/>
         <About/>
         <Contact/>
+        <Footer/>
       </div>
     </>
   )

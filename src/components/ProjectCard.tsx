@@ -5,6 +5,7 @@ interface ProjectCardProps {
   title: string;
   description: string;
   technologies: string[];
+  onImageClick?: () => void;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -12,6 +13,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   title,
   description,
   technologies,
+  onImageClick
 }) => {
   return (
     <div className="group relative bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-700">
@@ -21,6 +23,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           src={image}
           alt={title}
           className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+          onClick={onImageClick}
         />
       </div>
 
