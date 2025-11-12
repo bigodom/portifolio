@@ -90,13 +90,13 @@ export default function Footer() {
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4" />
                 <span className="text-primary-foreground/80" data-testid="text-footer-phone">
-                  (11) 99999-9999
+                  (31) 99221-8398
                 </span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="h-4 w-4" />
                 <span className="text-primary-foreground/80" data-testid="text-footer-location">
-                  São Paulo, SP
+                  João Monlevade, MG
                 </span>
               </div>
             </div>

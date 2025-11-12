@@ -1,13 +1,6 @@
-import { ArrowRight } from "lucide-react";
 import backgroundVideo from "../assets/background.mp4";
 
 export default function Hero() {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <section

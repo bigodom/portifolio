@@ -27,21 +27,21 @@ export default function About() {
     ];
 
     return (
-        <section id="sobre" className="py-24 bg-gray-50">
+        <section id="sobre" className="py-24 bg-gray-200">
             <div className="max-w-7xl mx-auto px-4">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div>
                         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6" data-testid="text-about-title">
-                            Sobre a Maltech
+                            Sobre a GPY
                         </h2>
 
                         <p className="text-xl text-muted-foreground mb-6" data-testid="text-about-intro">
-                            Somos uma empresa especializada em desenvolvimento de sistemas,
+                            Somos uma empresa especializada em desenvolvimento de sistemas, criação de dashboards e automação,
                             focada em transformar ideias em soluções digitais eficientes e inovadoras.
                         </p>
 
                         <p className="text-muted-foreground mb-8" data-testid="text-about-description">
-                            Com mais de 5 anos de experiência no mercado, já entregamos mais de 50 projetos
+                            Com mais de 2 anos de experiência no mercado, já entregamos mais de 10 projetos
                             para empresas de diversos segmentos. Nossa equipe combina expertise técnica com
                             visão de negócios para criar soluções que realmente fazem a diferença.
                         </p>
