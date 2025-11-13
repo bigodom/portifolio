@@ -7,7 +7,9 @@ export default defineConfig({
   plugins: [react(),
     tailwindcss()
   ],
-  base: '/portifolio/',
+  // Use relative base so built files reference assets relative to `dist/`.
+  // This avoids absolute `/portifolio/` paths which break when serving `dist` locally.
+  base: './',
   server: {
     port: 3016,
     open: true,
