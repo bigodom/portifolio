@@ -4,7 +4,7 @@ export default function Contact() {
   const whatsappNumber = "5531992218398";
   const whatsappMessage = "Olá! Vim pelo site e gostaria de saber mais.";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-  const mailToUrl = "mailto:maltech@gmail.com?subject=Contato%20pelo%20site&body=Olá!%20Gostaria%20de%20saber%20mais%20sobre...";
+  const mailToUrl = "mailto:gpysolucoes@gmail.com";
 
   return (
     <section id="contato" className="py-24 bg-gradient-to-b from-white to-gray-50">
@@ -40,7 +40,7 @@ export default function Contact() {
               />
               <button
                 type="submit"
-                className="w-full bg-primary text-white font-medium py-3 rounded-lg hover:bg-primary/90 transition-all duration-200"
+                className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 rounded-lg hover:bg-primary/90 transition-all duration-200"
               >
                 Enviar
               </button>
@@ -58,7 +58,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-medium">E-mail</h4>
-                  <p className="text-gray-600">maltech@gmail.com</p>
+                  <p className="text-gray-600">gpysolucoes@gmail.com</p>
                 </div>
               </div>
 

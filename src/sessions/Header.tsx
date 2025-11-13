@@ -13,7 +13,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 text-white border-b bg-blue-900">
+    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b text-blue-950 bg-white/80 border-gray-200">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -27,35 +27,35 @@ export default function Header() {
           <nav className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection("inicio")}
-              className="text-foreground hover:text-primary transition-colors pointer"
+              className="text-foreground hover:text-primary transition-colors cursor-pointer"
               data-testid="link-inicio"
             >
               Início
             </button>
             <button
               onClick={() => scrollToSection("servicos")}
-              className="text-foreground hover:text-primary transition-colors"
+              className="text-foreground hover:text-primary transition-colors cursor-pointer"
               data-testid="link-servicos"
             >
               Serviços
             </button>
             <button
               onClick={() => scrollToSection("trabalhos")}
-              className="text-foreground hover:text-primary transition-colors"
+              className="text-foreground hover:text-primary transition-colors cursor-pointer"
               data-testid="link-trabalhos"
             >
               Trabalhos
             </button>
             <button
               onClick={() => scrollToSection("sobre")}
-              className="text-foreground hover:text-primary transition-colors"
+              className="text-foreground hover:text-primary transition-colors cursor-pointer"
               data-testid="link-sobre"
             >
               Sobre
             </button>
             <button
               onClick={() => scrollToSection("contato")}
-              className="text-foreground hover:text-primary transition-colors"
+              className="text-foreground hover:text-primary transition-colors cursor-pointer"
               data-testid="link-contato"
             >
               Contato
@@ -84,12 +84,12 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         <div 
-          className={`md:hidden fixed inset-x-0 top-16 bg-background/95 backdrop-blur-sm transition-all duration-300 ${
+          className={`md:hidden fixed inset-x-0 top-16 transition-all duration-300 ${
             isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
           }`} 
           data-testid="menu-mobile"
         >
-            <nav className="py-4 space-y-4 px-4 border-t">
+            <nav className="py-4 space-y-4 px-4 border-t bg-white/90 backdrop-blur-2xl border-gray-200">
               <button
                 onClick={() => scrollToSection("inicio")}
                 className="block w-full text-left text-foreground hover:text-primary transition-colors"

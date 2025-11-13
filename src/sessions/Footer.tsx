@@ -16,7 +16,7 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Code2 className="h-6 w-6" />
-              <span className="text-xl font-bold" data-testid="text-footer-logo">Maltech</span>
+              <span className="text-xl font-bold" data-testid="text-footer-logo">GPY Soluções</span>
             </div>
             <p className="text-primary-foreground/80" data-testid="text-footer-description">
               Transformando ideias em soluções digitais inovadoras e eficientes.
@@ -30,7 +30,7 @@ export default function Footer() {
               <li>
                 <button 
                   onClick={() => scrollToSection("inicio")}
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors cursor-pointer"
                   data-testid="link-footer-inicio"
                 >
                   Início
@@ -39,7 +39,7 @@ export default function Footer() {
               <li>
                 <button 
                   onClick={() => scrollToSection("servicos")}
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors cursor-pointer"
                   data-testid="link-footer-servicos"
                 >
                   Serviços
@@ -48,7 +48,7 @@ export default function Footer() {
               <li>
                 <button 
                   onClick={() => scrollToSection("trabalhos")}
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors cursor-pointer"
                   data-testid="link-footer-trabalhos"
                 >
                   Trabalhos
@@ -57,7 +57,7 @@ export default function Footer() {
               <li>
                 <button 
                   onClick={() => scrollToSection("sobre")}
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors cursor-pointer"
                   data-testid="link-footer-sobre"
                 >
                   Sobre
@@ -84,7 +84,7 @@ export default function Footer() {
               <div className="flex items-center space-x-3">
                 <Mail className="h-4 w-4" />
                 <span className="text-primary-foreground/80" data-testid="text-footer-email">
-                  contato@maltech.com.br
+                  gpysolucoes@gmail.com
                 </span>
               </div>
               <div className="flex items-center space-x-3">
@@ -103,9 +103,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 mt-12 pt-8 text-center">
-          <p className="text-primary-foreground/60" data-testid="text-footer-copyright">
-            © {new Date().getFullYear()} Maltech. Todos os direitos reservados.
+        <div className="border-t border-gray-400 mt-12 pt-8 text-center">
+          <p className="text-gray-400" data-testid="text-footer-copyright">
+            © {new Date().getFullYear()} GPY. Todos os direitos reservados.
           </p>
         </div>
       </div>
