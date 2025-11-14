@@ -41,7 +41,7 @@ export default function About() {
                         </p>
 
                         <p className="text-muted-foreground mb-8" data-testid="text-about-description">
-                            Com mais de 2 anos de experiência no mercado, já entregamos mais de 10 projetos
+                            Com mais de 3 anos de experiência no mercado, já entregamos mais de 10 projetos
                             para empresas de diversos segmentos. Nossa equipe combina expertise técnica com
                             visão de negócios para criar soluções que realmente fazem a diferença.
                         </p>

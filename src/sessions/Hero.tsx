@@ -23,28 +23,28 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-7xl w-full mx-auto px-4 text-center text-white">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6" data-testid="text-hero-title">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6" data-testid="text-hero-title">
             Transformamos suas ideias em{" "}
             <span className="text-blue-500">soluções digitais</span>
           </h1>
 
-          <p className="text-xl md:text-2xl mb-8 " data-testid="text-hero-subtitle">
+          <p className="text-2xl md:text-2xl mb-8 " data-testid="text-hero-subtitle">
             Desenvolvimento de sites, automação, análise de dados e dashboards profissionais
             para empresas que buscam inovação e eficiência.
           </p>
 
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div data-testid="stat-projects">
-              <div className="text-3xl font-bold text-ring">10+</div>
-              <div className="text-primary-foreground/80">Projetos Entregues</div>
+              <div className="text-3xl font-bold text-blue-100">10+</div>
+              <div className="text-xl">Projetos Entregues</div>
             </div>
             <div data-testid="stat-clients">
-              <div className="text-3xl font-bold text-ring">30+</div>
-              <div className="text-primary-foreground/80">Clientes Satisfeitos</div>
+              <div className="text-3xl font-bold text-ring">5+</div>
+              <div className="text-xl">Clientes Satisfeitos</div>
             </div>
             <div data-testid="stat-years">
-              <div className="text-3xl font-bold text-ring">5+</div>
-              <div className="text-primary-foreground/80">Anos de Experiência</div>
+              <div className="text-3xl font-bold text-ring">3+</div>
+              <div className="text-xl">Anos de Experiência</div>
             </div>
           </div>
         </div>
