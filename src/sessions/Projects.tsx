@@ -22,7 +22,7 @@ function Projects() {
             image: almoxarifado,
             title: "Controle de Estoque para Almoxarifado",
             description: "Controle de entrada de suprimentos e saída por funcionário.",
-            technologies: ["React", "TypeScript", "Node.js", "Prisma", "Bootstrap"]
+            technologies: ["React", "TypeScript", "Node.js", "Postgresql", "Bootstrap"]
         },
         {
             image: lojinha,
@@ -40,13 +40,13 @@ function Projects() {
             image: bi_gestao_frotas,
             title: "Sistema de Gestão de Frotas",
             description: "Plataforma completa para controle de veículos, manutenção e consumo de combustível em tempo real.",
-            technologies: ["React", "TypeScript", "Node.js", "Prisma", "Tailwind"]
+            technologies: ["Power BI", "DAX", "SQL", "Data Visualization"]
         },
         {
             image: system_monitor,
             title: "Painel de Monitoramento de Sistemas",
             description: "Painel de monitoramento em tempo real para servidores e aplicações, com alertas personalizados e dashboards intuitivos.",
-            technologies: ["React", "TypeScript", "Node.js", "Grafana", "Prometheus"]
+            technologies: ["React", "TypeScript", "Node.js", "Postgresql", "Tailwind"]
         },
     ];
     return (
