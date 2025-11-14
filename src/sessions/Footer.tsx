@@ -1,4 +1,4 @@
-import { Code2, Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import icon from "../assets/icon.png";
 
 export default function Footer() {
