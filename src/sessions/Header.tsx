@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import icon from "../assets/icon.png";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,6 +19,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
+            <img src={icon} alt="GPY" className="h-8 w-8 mr-3 object-contain" />
             <span className="text-2xl font-bold text-primary" data-testid="text-logo">
               GPY SOLUÇÕES
             </span>
@@ -27,35 +29,35 @@ export default function Header() {
           <nav className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection("inicio")}
-              className="text-foreground hover:text-primary transition-colors cursor-pointer"
+              className="text-foreground hover:text-blue-600 transition-colors cursor-pointer relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
               data-testid="link-inicio"
             >
               Início
             </button>
             <button
               onClick={() => scrollToSection("servicos")}
-              className="text-foreground hover:text-primary transition-colors cursor-pointer"
+              className="text-foreground hover:text-blue-600 transition-colors cursor-pointer relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
               data-testid="link-servicos"
             >
               Serviços
             </button>
             <button
               onClick={() => scrollToSection("trabalhos")}
-              className="text-foreground hover:text-primary transition-colors cursor-pointer"
+              className="text-foreground hover:text-blue-600 transition-colors cursor-pointer relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
               data-testid="link-trabalhos"
             >
               Trabalhos
             </button>
             <button
               onClick={() => scrollToSection("sobre")}
-              className="text-foreground hover:text-primary transition-colors cursor-pointer"
+              className="text-foreground hover:text-blue-600 transition-colors cursor-pointer relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
               data-testid="link-sobre"
             >
               Sobre
             </button>
             <button
               onClick={() => scrollToSection("contato")}
-              className="text-foreground hover:text-primary transition-colors cursor-pointer"
+              className="text-foreground hover:text-blue-600 transition-colors cursor-pointer relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
               data-testid="link-contato"
             >
               Contato
@@ -92,35 +94,35 @@ export default function Header() {
             <nav className="py-4 space-y-4 px-4 border-t bg-white/90 backdrop-blur-2xl border-gray-200">
               <button
                 onClick={() => scrollToSection("inicio")}
-                className="block w-full text-left text-foreground hover:text-primary transition-colors"
+                className="block w-full text-left text-foreground hover:text-blue-600 transition-colors relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
                 data-testid="link-inicio-mobile"
               >
                 Início
               </button>
               <button
                 onClick={() => scrollToSection("servicos")}
-                className="block w-full text-left text-foreground hover:text-primary transition-colors"
+                className="block w-full text-left text-foreground hover:text-blue-600 transition-colors relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
                 data-testid="link-servicos-mobile"
               >
                 Serviços
               </button>
               <button
                 onClick={() => scrollToSection("trabalhos")}
-                className="block w-full text-left text-foreground hover:text-primary transition-colors"
+                className="block w-full text-left text-foreground hover:text-blue-600 transition-colors relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
                 data-testid="link-trabalhos-mobile"
               >
                 Trabalhos
               </button>
               <button
                 onClick={() => scrollToSection("sobre")}
-                className="block w-full text-left text-foreground hover:text-primary transition-colors"
+                className="block w-full text-left text-foreground hover:text-blue-600 transition-colors relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
                 data-testid="link-sobre-mobile"
               >
                 Sobre
               </button>
               <button
                 onClick={() => scrollToSection("contato")}
-                className="block w-full text-left text-foreground hover:text-primary transition-colors"
+                className="block w-full text-left text-foreground hover:text-blue-600 transition-colors relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
                 data-testid="link-contato-mobile"
               >
                 Contato

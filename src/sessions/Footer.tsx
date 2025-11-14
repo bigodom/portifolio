@@ -1,4 +1,5 @@
 import { Code2, Mail, Phone, MapPin } from "lucide-react";
+import icon from "../assets/icon.png";
 
 export default function Footer() {
   const scrollToSection = (sectionId: string) => {
@@ -15,7 +16,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <Code2 className="h-6 w-6" />
+              <img src={icon} alt="GPY" className="h-8 w-8 mr-3 object-contain" />
               <span className="text-xl font-bold" data-testid="text-footer-logo">GPY Soluções</span>
             </div>
             <p className="text-primary-foreground/80" data-testid="text-footer-description">
