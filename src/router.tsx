@@ -41,9 +41,8 @@ const router = createBrowserRouter(
     },
   ],
   {
-    // Use Vite's BASE_URL so the router matches the deployed base path.
-    // Default is '/' when not configured, avoiding mismatch with '/'.
-    basename: import.meta.env.BASE_URL,
+    // Always use '/' as basename since Vite base is set to './' (relative paths)
+    basename: '/',
   }
 );
 
