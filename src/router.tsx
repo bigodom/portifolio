@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // Lazy load das páginas para otimizar o build
 const Home = lazy(() => import('./pages/Home'));
 const Blog = lazy(() => import('./pages/Blog'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Componente de loading
 const Loading = () => (
@@ -30,9 +31,19 @@ const router = createBrowserRouter(
         </Suspense>
       ),
     },
+    {
+      path: '*',
+      element: (
+        <Suspense fallback={<Loading />}>
+          <NotFound />
+        </Suspense>
+      ),
+    },
   ],
   {
-    basename: import.meta.env.MODE === 'production' ? '/portifolio' : '/',
+    // Use Vite's BASE_URL so the router matches the deployed base path.
+    // Default is '/' when not configured, avoiding mismatch with '/'.
+    basename: import.meta.env.BASE_URL,
   }
 );
 
