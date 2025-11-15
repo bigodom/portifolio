@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import icon from "../assets/icon.png";
 
 export default function Header() {
@@ -62,6 +63,13 @@ export default function Header() {
             >
               Contato
             </button>
+            <Link
+              to="/blog"
+              className="text-foreground hover:text-blue-600 transition-colors relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
+              data-testid="link-blog"
+            >
+              Blog
+            </Link>
           </nav>
 
           {/* CTA Button and Theme Toggle */}
@@ -127,6 +135,13 @@ export default function Header() {
               >
                 Contato
               </button>
+              <Link
+                to="/blog"
+                className="block w-full text-left text-foreground hover:text-blue-600 transition-colors relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
+                data-testid="link-blog-mobile"
+              >
+                Blog
+              </Link>
               <button 
                 className="w-full mt-4"
                 onClick={() => scrollToSection("contato")}
