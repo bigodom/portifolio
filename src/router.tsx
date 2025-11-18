@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // Lazy load das páginas para otimizar o build
 const Home = lazy(() => import('./pages/Home'));
 const Blog = lazy(() => import('./pages/Blog'));
+const BlogPost = lazy(() => import('./components/BlogPost'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Componente de loading
@@ -28,6 +29,14 @@ const router = createBrowserRouter(
       element: (
         <Suspense fallback={<Loading />}>
           <Blog />
+        </Suspense>
+      ),
+    },
+    {
+      path: '/blog/:id',
+      element: (
+        <Suspense fallback={<Loading />}>
+          <BlogPost />
         </Suspense>
       ),
     },
