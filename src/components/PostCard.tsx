@@ -1,4 +1,4 @@
-import { Calendar, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface PostCardProps {
@@ -10,46 +10,29 @@ interface PostCardProps {
   image?: string;
 }
 
-const PostCard = ({ id, title, excerpt, category, date, image }: PostCardProps) => {
+const PostCard = ({ id, title, excerpt, category, date }: PostCardProps) => {
   return (
-    <div className="overflow-hidden group hover:shadow-hover transition-all duration-300 animate-fade-in border-border">
-      <div className="aspect-video overflow-hidden bg-muted">
-        <img 
-          src={image} 
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-        />
-      </div>
-      
-      <div className="space-y-2">
-        <div className="flex items-center gap-2">
-
-          <div className="flex items-center gap-1 text-sm text-muted-foreground">
-            <Calendar className="h-4 w-4" />
-            <span>{date}</span>
-          </div>
+    <article className="flex flex-col h-full bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+      <header className="flex items-start justify-between gap-4 mb-4">
+        <div>
+          <span className="inline-block text-xs font-semibold text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
+            {category}
+          </span>
         </div>
-        
-        <h3 className="text-xl font-bold line-clamp-2 group-hover:text-primary transition-colors">
-          {title}
-        </h3>
-      </div>
-      
-      <div>
-        <p className="text-muted-foreground line-clamp-3">
-          {excerpt}
-        </p>
-      </div>
-      
-      <div>
-        <Link to={`/blog/${id}`} className="w-full">
-          <button className="w-full group/btn">
-            Ler mais
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-          </button>
+        <time className="text-sm text-slate-500">{new Date(date).toLocaleDateString('pt-BR')}</time>
+      </header>
+
+      <h3 className="text-lg md:text-xl font-semibold text-slate-900 mb-3 line-clamp-2">{title}</h3>
+
+      <p className="text-slate-600 mb-6 line-clamp-3 flex-grow">{excerpt}</p>
+
+      <footer className="mt-4">
+        <Link to={`/blog/${id}`} className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-500">
+          Ler mais
+          <ArrowRight className="h-4 w-4" />
         </Link>
-      </div>
-    </div>
+      </footer>
+    </article>
   );
 };
 

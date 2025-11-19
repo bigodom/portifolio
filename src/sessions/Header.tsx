@@ -22,7 +22,7 @@ export default function Header() {
           <div className="flex items-center">
             <img src={icon} alt="GPY" className="h-8 w-8 mr-3 object-contain" />
             <span className="text-2xl font-bold text-primary" data-testid="text-logo">
-              GPY SOLUÇÕES
+              <a href="./">GPY SOLUÇÕES</a>
             </span>
           </div>
 
@@ -63,7 +63,7 @@ export default function Header() {
             >
               Contato
             </button>
-            {/*
+            
             <Link
               to="/blog"
               className="text-foreground disabled hover:text-blue-600 transition-colors relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
@@ -72,7 +72,7 @@ export default function Header() {
             >
               Blog
             </Link>
-            */}
+           
           </nav>
 
           {/* CTA Button and Theme Toggle */}
