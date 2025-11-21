@@ -17,7 +17,8 @@ type Post = FrontMatter & {
 // Carrega todos os arquivos Markdown automaticamente
 const rawPosts = import.meta.glob('../posts/*.md', {
   eager: true,
-  as: 'raw',
+  query: '?raw',
+  import: 'default'
 }) as Record<string, string>;
 
 // Faz o parse de front matter + conteúdo
@@ -97,7 +98,7 @@ export default function Blog() {
         </div>
       </main>
 
-      <Footer />
+      
     </>
   );
 }
