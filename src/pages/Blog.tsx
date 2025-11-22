@@ -1,4 +1,3 @@
-import Footer from "../sessions/Footer";
 import Header from "../sessions/Header";
 import PostCard from "../components/PostCard";
 
