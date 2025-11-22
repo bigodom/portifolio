@@ -4,12 +4,13 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // Lazy load das páginas para otimizar o build
 const Home = lazy(() => import('./pages/Home'));
 const Blog = lazy(() => import('./pages/Blog'));
+const BlogPost = lazy(() => import('./components/BlogPost'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Componente de loading
 const Loading = () => (
-  <div className="flex items-center justify-center min-h-screen bg-slate-900">
-    <div className="text-white text-2xl">Carregando...</div>
+  <div className="flex items-center justify-center min-h-screen">
+    <div className="text-2xl">Carregando...</div>
   </div>
 );
 
@@ -28,6 +29,14 @@ const router = createBrowserRouter(
       element: (
         <Suspense fallback={<Loading />}>
           <Blog />
+        </Suspense>
+      ),
+    },
+    {
+      path: '/blog/:id',
+      element: (
+        <Suspense fallback={<Loading />}>
+          <BlogPost />
         </Suspense>
       ),
     },
