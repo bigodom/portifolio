@@ -2,8 +2,8 @@ import ReactMarkdown from 'react-markdown';
 import { Calendar, Tag, Clock } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 import type { ComponentPropsWithoutRef } from 'react';
-import Header from '../sessions/Header';
-import Footer from '../sessions/Footer';
+import BlogFooter from './BlogFooter';
+import BlogHeader from './BlogHeader';
 
 interface BlogPostProps {
   content?: string;
@@ -59,12 +59,12 @@ export default function BlogPost({ content, title, date, category, readingTime }
   }
   return (
     <>
-      <Header />
+      <BlogHeader />
       <div className="min-h-screen bg-white py-24 px-4 relative text-slate-900">
-        <article className="relative z-10 container mx-auto max-w-3xl">
+        <article className="relative z-10 container mx-auto max-w-4xl">
           {/* --- Cabeçalho do Post --- */}
           {(title || date || category) && (
-            <header className="p-6 md:p-10 border-b border-slate-200 bg-white rounded-t-2xl">
+            <header className="p-6 md:p-10 bg-white">
               {/* Metadados */}
               <div className="flex flex-wrap items-center gap-4 text-sm mb-6">
                 {category && (
@@ -100,7 +100,7 @@ export default function BlogPost({ content, title, date, category, readingTime }
           )}
 
           {/* --- Conteúdo do Post --- */}
-          <div className="p-6 md:p-10 bg-white border border-slate-200 rounded-b-2xl shadow-sm">
+          <div className="p-6 md:p-10">
             <ReactMarkdown
               components={{
                 // Títulos
@@ -212,7 +212,7 @@ export default function BlogPost({ content, title, date, category, readingTime }
           </div>
         </article>
       </div>
-      <Footer />
+      <BlogFooter />
     </>
   );
 }

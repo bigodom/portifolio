@@ -1,5 +1,6 @@
-import Header from "../sessions/Header";
 import PostCard from "../components/PostCard";
+import BlogHeader from "../components/BlogHeader";
+import BlogFooter from "../components/BlogFooter";
 
 type FrontMatter = {
   title: string;
@@ -65,7 +66,7 @@ function parseFrontMatter(source: string): {
 export default function Blog() {
   return (
     <>
-      <Header />
+      <BlogHeader />
 
       <main className="min-h-screen bg-white py-24 px-4 relative text-slate-900">
         {/* Subtle decorative accents to match home but light */}
@@ -96,7 +97,7 @@ export default function Blog() {
           ))}
         </div>
       </main>
-
+      <BlogFooter />
       
     </>
   );
