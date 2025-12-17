@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "include": [
+    "/blog/*",
+    "/sobre/*",
+    "/outro-caminho/*",
+    "/*"
+  ],
+  "exclude": [
+    "/assets/*",
+    "/favicon.ico"
+  ]
+}
