@@ -1,3 +1,4 @@
+import { Clock } from "lucide-react";
 import backgroundVideo from "../assets/background2.mp4";
 
 export default function Hero() {
@@ -31,18 +32,28 @@ export default function Hero() {
             Elimine processos manuais lentos e tome decisões baseadas em dados com dashboards em tempo real
           </p>
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-t border-white/10">
+            <div data-testid="stat-roi">
+              <div className="text-3xl font-bold flex justify-center items-center gap-1">
+                <Clock size={20} />
+                6 meses
+              </div>
+              <div className="text-sm uppercase tracking-wider mt-1">Payback Médio</div>
+            </div>
+            
+            <div data-testid="stat-savings">
+              <div className="text-3xl font-bold">40%</div>
+              <div className="text-sm uppercase tracking-wider mt-1">Economia Anual</div>
+            </div>
+
             <div data-testid="stat-projects">
-              <div className="text-3xl font-bold text-blue-100">10+</div>
-              <div className="text-xl">Projetos Entregues</div>
+              <div className="text-3xl font-bold text-white">10+</div>
+              <div className="text-sm uppercase tracking-wider mt-1">Sistemas Ativos</div>
             </div>
-            <div data-testid="stat-clients">
-              <div className="text-3xl font-bold text-ring">5+</div>
-              <div className="text-xl">Clientes Satisfeitos</div>
-            </div>
-            <div data-testid="stat-years">
-              <div className="text-3xl font-bold text-ring">3+</div>
-              <div className="text-xl">Anos de Experiência</div>
+
+            <div data-testid="stat-uptime">
+              <div className="text-3xl font-bold text-white">24/7</div>
+              <div className="text-sm uppercase tracking-wider mt-1">Disponibilidade</div>
             </div>
           </div>
         </div>

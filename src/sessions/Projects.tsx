@@ -45,14 +45,14 @@ function Projects() {
             image: ponto,
             title: "Automação de Folhas de Ponto",
             impact: "Economia de horas do RH",
-            description: "Sistema para geração e controlo de pontos manuais, garantindo conformidade e organização documental.",
+            description: "Sistema para geração e controle de pontos manuais, garantindo conformidade e organização documental.",
             technologies: ["TypeScript", "Tailwind", "Node.js"]
         },
         {
             image: system_monitor,
             title: "Monitorização de Infraestrutura",
             impact: "Disponibilidade 24/7 garantida",
-            description: "Painel de controlo em tempo real para servidores e aplicações com sistema de alertas preventivos.",
+            description: "Painel de controle em tempo real para servidores e aplicações com sistema de alertas preventivos.",
             technologies: ["React", "Real-time Data", "Node.js"]
         },
     ];

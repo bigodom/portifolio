@@ -74,7 +74,7 @@ export default function Contact() {
                     <textarea
                       id="message"
                       name="message"
-                      placeholder="Ex: Preciso automatizar o meu stock, quero um dashboard de vendas, etc."
+                      placeholder="Ex: Preciso automatizar o meu estoque, quero um dashboard de vendas, etc."
                       rows={4}
                       required
                       className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"

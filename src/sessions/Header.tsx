@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import icon from "../assets/logo_favicon(c.texto).png";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +36,7 @@ export default function Header() {
         {/* Logo/Marca */}
         <div className="flex items-center space-x-2">
           <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center shadow-lg">
-            <span className="text-white font-bold text-xl">G</span>
+            <img src={icon} alt="" />
           </div>
           <span className={`text-2xl font-bold tracking-tight ${scrolled ? "text-gray-900" : "text-white"}`}>
             GPY<span className="text-blue-500">Soluções</span>
