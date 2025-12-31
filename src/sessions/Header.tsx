@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import icon from "../assets/logo_impressao_leve.png";
+import icon from "../assets/logologo_a4.svg";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +35,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo/Marca */}
         <div className="flex items-center space-x-2">
-          <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center shadow-lg">
+          <div className="w-10 h-10 rounded-lg flex items-center justify-center">
             <img src={icon} alt="" />
           </div>
           <span className={`text-2xl font-bold tracking-tight ${scrolled ? "text-gray-900" : "text-white"}`}>
