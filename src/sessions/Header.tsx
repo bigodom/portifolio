@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import icon from "../assets/icon.png";
+import icon from "../assets/logologo_a4.svg";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
