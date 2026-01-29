@@ -1,0 +1,9 @@
+name = "loyalty-lite"
+type = "javascript"
+main = "src/index.js"
+[build]
+command = "npm run build"
+cwd = "."
+[[env.production.routes]]
+pattern = "*"
+zone_name = "gpysolucoes.com.br"
