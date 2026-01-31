@@ -11,8 +11,8 @@ export default function Services() {
     },
     {
       icon: Zap,
-      title: "Automação",
-      description: "Automatize processos repetitivos e aumente a produtividade da sua empresa com soluções personalizadas.",
+      title: "Automação de Processos",
+      description: "Economize horas de trabalho manual da sua equipe.",
     },
     {
       icon: BarChart3,
@@ -21,8 +21,8 @@ export default function Services() {
     },
     {
       icon: Monitor,
-      title: "Dashboards",
-      description: "Dashboards interativos e intuitivos para monitoramento em tempo real de KPIs e métricas importantes.",
+      title: "Inteligência de Negócio",
+      description: "Visualize seus lucros e gargalos em tempo real com dashboards personalizados e interativos.",
     },
   ];
 
@@ -46,7 +46,7 @@ export default function Services() {
                         key={index}
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: index * 0.2 }}
+                        transition={{ duration: 0.3, delay: index * 0.2 }}
                         viewport={{ once: true, amount: 0.3 }}
                         >
                         <SimpleCard

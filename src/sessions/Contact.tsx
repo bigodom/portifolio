@@ -1,9 +1,10 @@
-import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle, ClipboardCheck } from "lucide-react";
 import { useForm, ValidationError } from "@formspree/react";
 
 export default function Contact() {
   const whatsappNumber = "5531992218398";
-  const whatsappMessage = "Olá! Vim pelo site e gostaria de saber mais.";
+  // Mensagem de WhatsApp ajustada para a nova proposta
+  const whatsappMessage = "Olá! Gostaria de agendar um diagnóstico gratuito para a minha empresa.";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
   const mailToUrl = "mailto:gpysolucoes@gmail.com";
 
@@ -14,60 +15,69 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Entre em Contato
+            Agende o seu Diagnóstico Gratuito
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Pronto para transformar sua ideia em realidade? Vamos conversar sobre seu projeto!
+            Vamos analisar os seus processos atuais e identificar como a tecnologia pode 
+            reduzir os seus custos e acelerar o seu crescimento.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Formulário */}
+          {/* Formulário de Diagnóstico */}
           <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
             {state.succeeded ? (
-              <div className="text-center">
-                <h3 className="text-xl font-semibold mb-4">Mensagem enviada</h3>
-                <p className="text-gray-600">Obrigado! Recebemos sua mensagem e entraremos em contato em breve.</p>
+              <div className="text-center py-8">
+                <div className="flex justify-center mb-4">
+                    <ClipboardCheck className="h-12 w-12 text-green-500" />
+                </div>
+                <h3 className="text-xl font-semibold mb-4">Solicitação Recebida!</h3>
+                <p className="text-gray-600">
+                    Obrigado pelo interesse. Analisaremos as suas informações e entraremos em 
+                    contacto em breve para agendar a nossa conversa.
+                </p>
               </div>
             ) : (
               <>
-                <h3 className="text-xl font-semibold mb-6">Envie uma Mensagem</h3>
+                <h3 className="text-xl font-semibold mb-2">Solicite uma análise da sua operação</h3>
+                <p className="text-sm text-gray-500 mb-6">Preencha os dados abaixo e entraremos em contacto.</p>
+                
                 <form className="space-y-4" onSubmit={handleSubmit}>
                   <div>
-                    <label className="sr-only" htmlFor="name">Seu nome</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="name">Nome completo</label>
                     <input
                       id="name"
                       name="name"
                       type="text"
-                      placeholder="Seu nome"
+                      placeholder="Como gostaria de ser chamado?"
                       required
-                      className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                     <ValidationError prefix="Nome" field="name" errors={state.errors} />
                   </div>
 
                   <div>
-                    <label className="sr-only" htmlFor="email">Seu e-mail</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="email">E-mail corporativo</label>
                     <input
                       id="email"
                       name="email"
                       type="email"
-                      placeholder="Seu e-mail"
+                      placeholder="exemplo@suaempresa.com"
                       required
-                      className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                     <ValidationError prefix="E-mail" field="email" errors={state.errors} />
                   </div>
 
                   <div>
-                    <label className="sr-only" htmlFor="message">Sua mensagem</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="message">Qual o maior desafio da sua empresa hoje?</label>
                     <textarea
                       id="message"
                       name="message"
-                      placeholder="Sua mensagem"
+                      placeholder="Ex: Preciso automatizar o meu estoque, quero um dashboard de vendas, etc."
                       rows={4}
                       required
-                      className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                     <ValidationError prefix="Mensagem" field="message" errors={state.errors} />
                   </div>
@@ -75,73 +85,74 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={state.submitting}
-                    className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 rounded-lg hover:bg-primary/90 transition-all duration-200 disabled:opacity-60"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-60"
                   >
-                    {state.submitting ? 'Enviando...' : 'Enviar'}
+                    {state.submitting ? 'A processar...' : 'QUERO MEU DIAGNÓSTICO GRATUITO'}
                   </button>
-
-                  {/* Field-level validation messages are rendered via <ValidationError /> above. */}
                 </form>
               </>
             )}
           </div>
 
-          {/* Informações de Contato */}
+          {/* Informações de Contacto */}
           <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 space-y-8">
-            <h3 className="text-xl font-semibold mb-6">Informações de Contato</h3>
+            <div>
+                <h3 className="text-xl font-semibold mb-2">Informações de Contacto</h3>
+                <p className="text-gray-500 text-sm">Prefere um contacto direto? Escolha um dos canais abaixo:</p>
+            </div>
 
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <Mail className="h-5 w-5 text-primary" />
+                <div className="p-3 bg-blue-50 rounded-lg">
+                  <Mail className="h-5 w-5 text-blue-600" />
                 </div>
                 <div>
-                  <h4 className="font-medium">E-mail</h4>
+                  <h4 className="font-medium text-gray-900">E-mail</h4>
                   <p className="text-gray-600">gpysolucoes@gmail.com</p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="p-3 bg-green-100 rounded-lg">
+                <div className="p-3 bg-green-50 rounded-lg">
                   <Phone className="h-5 w-5 text-green-600" />
                 </div>
                 <div>
-                  <h4 className="font-medium">Telefone</h4>
+                  <h4 className="font-medium text-gray-900">Telefone / WhatsApp</h4>
                   <p className="text-gray-600">(31) 99221-8398</p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="p-3 bg-blue-100 rounded-lg">
-                  <MapPin className="h-5 w-5 text-blue-600" />
+                <div className="p-3 bg-gray-50 rounded-lg">
+                  <MapPin className="h-5 w-5 text-gray-600" />
                 </div>
                 <div>
-                  <h4 className="font-medium">Localização</h4>
+                  <h4 className="font-medium text-gray-900">Localização</h4>
                   <p className="text-gray-600">
-                    João Monlevade, MG<br />Brasil
+                    João Monlevade, MG<br />Atendimento em todo o Brasil
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Botões de ação */}
-            <div className="pt-6 flex flex-col sm:flex-row gap-4">
+            {/* Botões de ação rápida */}
+            <div className="pt-6 border-t border-gray-100 flex flex-col sm:flex-row gap-4">
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-md"
+                className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-4 rounded-lg font-bold transition-all duration-200 shadow-md flex-1"
               >
                 <MessageCircle className="w-5 h-5" />
-                WhatsApp
+                FALAR NO WHATSAPP
               </a>
 
               <a
                 href={mailToUrl}
-                className="flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-md"
+                className="flex items-center justify-center gap-2 bg-gray-800 hover:bg-black text-white px-6 py-4 rounded-lg font-bold transition-all duration-200 shadow-md flex-1"
               >
                 <Mail className="w-5 h-5" />
-                Enviar E-mail
+                ENVIAR E-MAIL
               </a>
             </div>
           </div>

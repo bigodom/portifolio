@@ -1,160 +1,115 @@
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
-import icon from "../assets/icon.png";
+import { useState, useEffect } from "react";
+import { Menu, X, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import icon from "../assets/logologo_a4.svg";
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false);
-    }
-  };
+  // Monitora a rolagem para aplicar o efeito de vidro
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: "Início", href: "#inicio" },
+    { name: "Serviços", href: "#servicos" },
+    { name: "Projetos", href: "#trabalhos" },
+    { name: "Sobre", href: "#sobre" },
+    { name: "Blog", href: "/blog" },
+  ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b text-blue-950 bg-white/80 border-gray-200">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex items-center">
-            <img src={icon} alt="GPY" className="h-8 w-8 mr-3 object-contain" />
-            <span className="text-2xl font-bold text-primary" data-testid="text-logo">
-              <a href="./">GPY SOLUÇÕES</a>
-            </span>
+    <header
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled 
+          ? "bg-white/80 backdrop-blur-md shadow-sm py-3" 
+          : "bg-transparent py-5"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        {/* Logo/Marca */}
+        <div className="flex items-center space-x-2">
+          <div className="w-10 h-10 rounded-lg flex items-center justify-center">
+            <img src={icon} alt="" />
           </div>
+          <span className={`text-2xl font-bold tracking-tight ${scrolled ? "text-gray-900" : "text-white"}`}>
+            GPY<span className="text-blue-500">Soluções</span>
+          </span>
+        </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <button
-              onClick={() => scrollToSection("inicio")}
-              className="text-foreground hover:text-blue-600 transition-colors cursor-pointer relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
-              data-testid="link-inicio"
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-8">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className={`text-sm font-medium transition-colors hover:text-blue-500 ${
+                scrolled ? "text-gray-600" : "text-gray-100"
+              }`}
             >
-              Início
-            </button>
-            <button
-              onClick={() => scrollToSection("servicos")}
-              className="text-foreground hover:text-blue-600 transition-colors cursor-pointer relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
-              data-testid="link-servicos"
-            >
-              Serviços
-            </button>
-            <button
-              onClick={() => scrollToSection("trabalhos")}
-              className="text-foreground hover:text-blue-600 transition-colors cursor-pointer relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
-              data-testid="link-trabalhos"
-            >
-              Trabalhos
-            </button>
-            <button
-              onClick={() => scrollToSection("sobre")}
-              className="text-foreground hover:text-blue-600 transition-colors cursor-pointer relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
-              data-testid="link-sobre"
-            >
-              Sobre
-            </button>
-            <button
-              onClick={() => scrollToSection("contato")}
-              className="text-foreground hover:text-blue-600 transition-colors cursor-pointer relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
-              data-testid="link-contato"
-            >
-              Contato
-            </button>
-            
-            <Link
-              to="/blog"
-              className="text-foreground disabled hover:text-blue-600 transition-colors relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
-              data-testid="link-blog"
-              
-            >
-              Blog
-            </Link>
-           
-          </nav>
-
-          {/* CTA Button and Theme Toggle */}
-          <div className="hidden md:flex items-center space-x-4">
-            <button 
-              onClick={() => scrollToSection("contato")}
-              data-testid="button-cta"
-            >
-              Solicitar Orçamento
-            </button>
-          </div>
-
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden"
-            data-testid="button-menu-toggle"
+              {link.name}
+            </a>
+          ))}
+          
+          <a
+            href="#contato"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all shadow-md hover:shadow-blue-500/20 flex items-center gap-2 group"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
+            Consultoria Gratuita
+            <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </a>
+        </nav>
 
-        {/* Mobile Navigation */}
-        <div 
-          className={`md:hidden fixed inset-x-0 top-16 transition-all duration-300 ${
-            isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-          }`} 
-          data-testid="menu-mobile"
+        {/* Mobile Menu Toggle */}
+        <button
+          className="md:hidden p-2 rounded-lg transition-colors"
+          onClick={() => setIsOpen(!isOpen)}
         >
-            <nav className="py-4 space-y-4 px-4 border-t bg-white/90 backdrop-blur-2xl border-gray-200">
-              <button
-                onClick={() => scrollToSection("inicio")}
-                className="block w-full text-left text-foreground hover:text-blue-600 transition-colors relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
-                data-testid="link-inicio-mobile"
-              >
-                Início
-              </button>
-              <button
-                onClick={() => scrollToSection("servicos")}
-                className="block w-full text-left text-foreground hover:text-blue-600 transition-colors relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
-                data-testid="link-servicos-mobile"
-              >
-                Serviços
-              </button>
-              <button
-                onClick={() => scrollToSection("trabalhos")}
-                className="block w-full text-left text-foreground hover:text-blue-600 transition-colors relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
-                data-testid="link-trabalhos-mobile"
-              >
-                Trabalhos
-              </button>
-              <button
-                onClick={() => scrollToSection("sobre")}
-                className="block w-full text-left text-foreground hover:text-blue-600 transition-colors relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
-                data-testid="link-sobre-mobile"
-              >
-                Sobre
-              </button>
-              <button
-                onClick={() => scrollToSection("contato")}
-                className="block w-full text-left text-foreground hover:text-blue-600 transition-colors relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
-                data-testid="link-contato-mobile"
-              >
-                Contato
-              </button>
-              <Link
-                to="/blog"
-                className="block w-full text-left text-foreground hover:text-blue-600 transition-colors relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100"
-                data-testid="link-blog-mobile"
-              >
-                Blog
-              </Link>
-              <button 
-                className="w-full mt-4"
-                onClick={() => scrollToSection("contato")}
-                data-testid="button-cta-mobile"
-              >
-                Solicitar Orçamento
-              </button>
-            </nav>
-        </div>
+          {isOpen ? (
+            <X className={scrolled ? "text-gray-900" : "text-white"} size={28} />
+          ) : (
+            <Menu className={scrolled ? "text-gray-900" : "text-white"} size={28} />
+          )}
+        </button>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-white border-t border-gray-100 overflow-hidden"
+          >
+            <div className="flex flex-col p-6 space-y-4">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-lg font-medium text-gray-700 hover:text-blue-600 transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
+              <a
+                href="#contato"
+                onClick={() => setIsOpen(false)}
+                className="bg-blue-600 text-white text-center py-4 rounded-xl font-bold shadow-lg"
+              >
+                Solicitar Diagnóstico
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

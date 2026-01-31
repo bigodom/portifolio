@@ -1,4 +1,5 @@
-import backgroundVideo from "../assets/background.mp4";
+import { Clock } from "lucide-react";
+import backgroundVideo from "../assets/background2.mp4";
 
 export default function Hero() {
 
@@ -23,28 +24,36 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-7xl w-full mx-auto px-4 text-center text-white">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6" data-testid="text-hero-title">
-            Transformamos suas ideias em{" "}
-            <span className="text-blue-500">soluções digitais</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6" data-testid="text-hero-title">
+            Reduza custos e aumente a produtividade com soluções digitais sob medida
           </h1>
 
-          <p className="text-2xl md:text-2xl mb-8 " data-testid="text-hero-subtitle">
-            Desenvolvimento de sites, automação, análise de dados e dashboards profissionais
-            para empresas que buscam inovação e eficiência.
+          <p className="text-lg sm:text-xl md:text-2xl mb-8 " data-testid="text-hero-subtitle">
+            Elimine processos manuais lentos e tome decisões baseadas em dados com dashboards em tempo real
           </p>
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-t border-white/10">
+            <div data-testid="stat-roi">
+              <div className="text-2xl sm:text-3xl font-bold flex justify-center items-center gap-1">
+                <Clock size={20} />
+                6 meses
+              </div>
+              <div className="text-sm uppercase tracking-wider mt-1">Payback Médio</div>
+            </div>
+            
+            <div data-testid="stat-savings">
+              <div className="text-2xl sm:text-3xl font-bold">40%</div>
+              <div className="text-sm uppercase tracking-wider mt-1">Economia Anual</div>
+            </div>
+
             <div data-testid="stat-projects">
-              <div className="text-3xl font-bold text-blue-100">10+</div>
-              <div className="text-xl">Projetos Entregues</div>
+              <div className="text-2xl sm:text-3xl font-bold text-white">10+</div>
+              <div className="text-sm uppercase tracking-wider mt-1">Sistemas Ativos</div>
             </div>
-            <div data-testid="stat-clients">
-              <div className="text-3xl font-bold text-ring">5+</div>
-              <div className="text-xl">Clientes Satisfeitos</div>
-            </div>
-            <div data-testid="stat-years">
-              <div className="text-3xl font-bold text-ring">3+</div>
-              <div className="text-xl">Anos de Experiência</div>
+
+            <div data-testid="stat-uptime">
+              <div className="text-2xl sm:text-3xl font-bold text-white">24/7</div>
+              <div className="text-sm uppercase tracking-wider mt-1">Disponibilidade</div>
             </div>
           </div>
         </div>
