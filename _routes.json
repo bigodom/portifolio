@@ -4,6 +4,9 @@
     "/blog/*",
     "/sobre/*",
     "/outro-caminho/*",
+    "/sites/*",
+    "/curso/*",
+    "/sistemas/*",
     "/*"
   ],
   "exclude": [
