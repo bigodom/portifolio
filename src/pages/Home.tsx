@@ -5,6 +5,7 @@ import Header from '../sessions/Header';
 import Hero from '../sessions/Hero';
 import Projects from '../sessions/Projects';
 import Services from '../sessions/Services';
+import WhatsAppFloating from '../components/WhatsAppFloating';
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <About />
         <Contact />
         <Footer />
+        <WhatsAppFloating />
       </div>
     </>
   );

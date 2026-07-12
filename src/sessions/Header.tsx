@@ -70,6 +70,8 @@ export default function Header() {
         <button
           className="md:hidden p-2 rounded-lg transition-colors"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={isOpen}
         >
           {isOpen ? (
             <X className={scrolled ? "text-gray-900" : "text-white"} size={28} />

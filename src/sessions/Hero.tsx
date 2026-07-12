@@ -1,7 +1,8 @@
-import { Clock } from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock, MessageCircle } from "lucide-react";
 import backgroundVideo from "../assets/background2.mp4";
 
 export default function Hero() {
+  const whatsappUrl = "https://wa.me/5531992218398?text=Ol%C3%A1!%20Gostaria%20de%20entender%20como%20a%20GPY%20pode%20ajudar%20minha%20empresa.";
 
   return (
     <section
@@ -32,6 +33,31 @@ export default function Hero() {
             Elimine processos manuais lentos e tome decisões baseadas em dados com dashboards em tempo real
           </p>
 
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+            <a
+              href="#contato"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-7 py-4 font-bold text-white shadow-lg shadow-blue-900/30 transition hover:bg-blue-500 hover:-translate-y-0.5"
+            >
+              Solicitar diagnóstico gratuito
+              <ArrowRight size={19} />
+            </a>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/40 bg-white/10 px-7 py-4 font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
+            >
+              <MessageCircle size={19} />
+              Conversar no WhatsApp
+            </a>
+          </div>
+
+          <div className="mb-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-white/85">
+            <span className="inline-flex items-center gap-2"><CheckCircle2 size={16} className="text-blue-400" />Atendimento consultivo</span>
+            <span className="inline-flex items-center gap-2"><CheckCircle2 size={16} className="text-blue-400" />Solução sob medida</span>
+            <span className="inline-flex items-center gap-2"><CheckCircle2 size={16} className="text-blue-400" />Atendimento em todo o Brasil</span>
+          </div>
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-t border-white/10">
             <div data-testid="stat-roi">
               <div className="text-2xl sm:text-3xl font-bold flex justify-center items-center gap-1">
@@ -56,6 +82,9 @@ export default function Hero() {
               <div className="text-sm uppercase tracking-wider mt-1">Disponibilidade</div>
             </div>
           </div>
+          <p className="text-xs text-white/60 -mt-4">
+            Indicadores observados em projetos selecionados; os resultados variam conforme o cenário de cada empresa.
+          </p>
         </div>
       </div>
     </section>

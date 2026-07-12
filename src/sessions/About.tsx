@@ -7,7 +7,7 @@ export default function About() {
         {
             icon: Zap,
             title: "Eficiência Operacional",
-            description: "Substituímos processos manuais lentos por sistemas automatizados que libertam o tempo da sua equipa."
+            description: "Substituímos processos manuais lentos por sistemas automatizados que liberam o tempo da sua equipe."
         },
         {
             icon: BarChart,
@@ -37,7 +37,7 @@ export default function About() {
                         viewport={{ once: true }}
                     >
                         <h2 className="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-3">
-                            Porquê a GPY Soluções?
+                            Por que escolher a GPY Soluções?
                         </h2>
                         <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
                             Ajudamos empresas a escalarem através da <span className="text-blue-600">tecnologia inteligente</span>
@@ -50,8 +50,8 @@ export default function About() {
 
                         <p className="text-gray-600 mb-8">
                             Com mais de 3 anos de atuação e um portfólio de mais de 10 projetos bem-sucedidos, 
-                            especializamo-nos em transformar caos operacional em processos digitais fluidos. 
-                            O nosso compromisso é com o seu resultado final.
+                            somos especializados em transformar operações desorganizadas em processos digitais fluidos. 
+                            Nosso compromisso é com o resultado da sua empresa.
                         </p>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -59,7 +59,7 @@ export default function About() {
                                 "Redução de custos operacionais",
                                 "Sistemas 100% personalizados",
                                 "Suporte técnico especializado",
-                                "Foco total na experiência do utilizador"
+                                "Foco total na experiência do usuário"
                             ].map((item, i) => (
                                 <div key={i} className="flex items-center space-x-3">
                                     <div className="flex-shrink-0 w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center">

@@ -17,7 +17,7 @@ function Projects() {
             image: gestao_frotas,
             title: "Gestão Estratégica de Frotas",
             impact: "Redução de 15% em custos de combustível",
-            description: "Plataforma robusta para controlo de manutenção e consumo, transformando custos variáveis em previsibilidade financeira.",
+            description: "Plataforma robusta para controle de manutenção e consumo, transformando custos variáveis em previsibilidade financeira.",
             technologies: ["React", "Node.js", "PostgreSQL"]
         },
         {
@@ -31,13 +31,13 @@ function Projects() {
             image: lojinha,
             title: "Frente de Caixa (PDV) Digital",
             impact: "Aumento na velocidade de atendimento",
-            description: "Sistema de vendas com gestão de stock em tempo real e emissão de talões, otimizado para alta rotatividade.",
+            description: "Sistema de vendas com gestão de estoque em tempo real e emissão de comprovantes, otimizado para alta rotatividade.",
             technologies: ["FastAPI", "React", "TypeScript"]
         },
         {
             image: almoxarifado,
-            title: "Controlo Inteligente de Inventário",
-            impact: "Zero perdas por falta de stock",
+            title: "Controle Inteligente de Inventário",
+            impact: "Menos perdas por falta de estoque",
             description: "Gestão automatizada de entrada e saída de suprimentos com alertas de reposição e histórico por colaborador.",
             technologies: ["React", "PostgreSQL", "Bootstrap"]
         },
@@ -50,8 +50,8 @@ function Projects() {
         },
         {
             image: system_monitor,
-            title: "Monitorização de Infraestrutura",
-            impact: "Disponibilidade 24/7 garantida",
+            title: "Monitoramento de Infraestrutura",
+            impact: "Monitoramento contínuo da operação",
             description: "Painel de controle em tempo real para servidores e aplicações com sistema de alertas preventivos.",
             technologies: ["React", "Real-time Data", "Node.js"]
         },
@@ -64,7 +64,7 @@ function Projects() {
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                         <div className="max-w-2xl">
                             <h2 className="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-3">
-                                Portefólio de Resultados
+                                Portfólio de Resultados
                             </h2>
                             <h3 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
                                 Soluções que geram <span className="text-blue-600">valor real</span> para o seu negócio
