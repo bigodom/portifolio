@@ -20,6 +20,7 @@ export default function Header() {
     { name: "Início", href: "#inicio" },
     { name: "Serviços", href: "#servicos" },
     { name: "Projetos", href: "#trabalhos" },
+    { name: "Sites", href: "/desenvolvimento-de-sites" },
     { name: "Sobre", href: "#sobre" },
     { name: "Blog", href: "/blog" },
   ];

@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import type { ComponentPropsWithoutRef } from 'react';
 import BlogFooter from './BlogFooter';
 import BlogHeader from './BlogHeader';
+import { useEffect } from 'react';
+import { ArrowRight, MessageCircle } from 'lucide-react';
 
 interface BlogPostProps {
   content?: string;
@@ -57,6 +59,16 @@ export default function BlogPost({ content, title, date, category, readingTime }
       readingTime = `${Math.ceil(found.content.split(/\s+/).length / 200)} min`;
     }
   }
+
+  useEffect(() => {
+    if (!title || !params?.id) return;
+    document.title = `${title} | Blog GPY Soluções`;
+    const description = document.querySelector('meta[name="description"]');
+    const canonical = document.querySelector('link[rel="canonical"]');
+    description?.setAttribute('content', `Leia no blog da GPY Soluções: ${title}. Conteúdo sobre tecnologia, sites, sistemas e automação para empresas.`);
+    canonical?.setAttribute('href', `https://gpysolucoes.com.br/blog/${params.id}`);
+  }, [title, params?.id]);
+
   return (
     <>
       <BlogHeader />
@@ -105,7 +117,7 @@ export default function BlogPost({ content, title, date, category, readingTime }
               components={{
                 // Títulos
                 h1: ({ ...props }: ComponentPropsWithoutRef<'h1'>) => (
-                  <h1 className="text-3xl font-bold text-slate-900 mt-12 mb-6 pb-4 border-b border-slate-200" {...props} />
+                  <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6 pb-4 border-b border-slate-200" {...props} />
                 ),
                 h2: ({ ...props }: ComponentPropsWithoutRef<'h2'>) => (
                   <h2 className="text-2xl font-semibold text-slate-800 mt-10 mb-5 flex items-center ms-2" {...props} />
@@ -211,6 +223,10 @@ export default function BlogPost({ content, title, date, category, readingTime }
             </ReactMarkdown>
           </div>
         </article>
+        <aside className="mx-auto mb-10 mt-4 grid max-w-4xl gap-6 rounded-3xl bg-slate-950 p-7 text-white sm:p-10 md:grid-cols-[1fr_auto] md:items-center">
+          <div><span className="text-sm font-bold uppercase tracking-wider text-blue-400">Aplique isso na sua empresa</span><h2 className="mt-2 text-2xl font-extrabold">Precisa transformar esse conhecimento em uma solução real?</h2><p className="mt-3 text-slate-300">Converse com a GPY sobre sites, sistemas, dashboards e automações desenvolvidos para o seu cenário.</p></div>
+          <a href="https://wa.me/5531992218398?text=Ol%C3%A1!%20Li%20um%20artigo%20no%20blog%20da%20GPY%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-4 font-bold hover:bg-blue-500"><MessageCircle size={19} /> Falar com a GPY <ArrowRight size={17} /></a>
+        </aside>
       </div>
       <BlogFooter />
     </>

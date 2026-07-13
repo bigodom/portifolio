@@ -1,57 +1,15 @@
-const BlogFooter = () => {
-    return (
-        <section className="py-20 px-4 bg-white relative overflow-hidden">
-            {/* Decorative background elements */}
-            <div className="absolute inset-0 -z-10">
-                <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-50 to-transparent rounded-full blur-3xl" />
-                <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-purple-50 to-transparent rounded-full blur-3xl" />
-            </div>
+import { ArrowRight, Mail, MessageCircle } from "lucide-react";
 
-            <div className="container mx-auto max-w-4xl">
-                {/* Card container with gradient border effect */}
-                <div className="relative bg-gradient-to-br from-white to-slate-50 rounded-3xl p-12 md:p-16 border border-slate-200 shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                    {/* Accent line top */}
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent rounded-t-3xl" />
-
-                    <div className="text-center">
-                        <div className="inline-block mb-6">
-                            <span className="text-xs font-semibold text-blue-600 uppercase tracking-widest bg-blue-50 px-4 py-2 rounded-full border border-blue-100">
-                                💡 Transforme seu negócio
-                            </span>
-                        </div>
-
-                        <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent leading-tight">
-                            Precisa de uma Solução Tecnológica?
-                        </h2>
-
-                        <p className="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-                            A GPY desenvolve <span className="font-semibold text-slate-800">sistemas customizados</span>, <span className="font-semibold text-slate-800">dashboards inteligentes</span>, <span className="font-semibold text-slate-800">soluções de IA</span> e <span className="font-semibold text-slate-800">análise de dados</span> para impulsionar o seu negócio.
-                        </p>
-
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                            <a href="https://gpysolucoes.com.br/#contato" className="group relative px-8 md:px-12 py-4 md:py-5 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-semibold text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                                <span className="flex items-center gap-2">
-                                    Fale Conosco
-                                    <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                    </svg>
-                                </span>
-                            </a>
-                            <a href="mailto:contact@gpy.com" className="text-slate-600 hover:text-blue-600 font-medium transition-colors flex items-center gap-2">
-                                Ou envie um e-mail
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    {/* Accent line bottom */}
-                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent rounded-b-3xl" />
-                </div>
-            </div>
-        </section>
-    );
-};
-
-export default BlogFooter;
+export default function BlogFooter() {
+  return (
+    <footer className="bg-slate-950 px-5 py-16 text-white">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid gap-10 rounded-[2rem] border border-white/10 bg-gradient-to-br from-blue-700 to-blue-500 p-8 sm:p-12 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div><span className="text-sm font-bold uppercase tracking-[.2em] text-blue-100">Transforme conhecimento em resultado</span><h2 className="mt-4 max-w-3xl text-3xl font-extrabold sm:text-4xl">Sua empresa precisa de um site, sistema ou automação sob medida?</h2><p className="mt-4 max-w-2xl text-blue-100">A GPY entende seu desafio e desenvolve a solução digital adequada para reduzir trabalho manual, melhorar decisões e atrair novas oportunidades.</p></div>
+          <a href="https://wa.me/5531992218398?text=Ol%C3%A1!%20Li%20um%20artigo%20no%20blog%20da%20GPY%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-bold text-blue-700 transition hover:bg-blue-50"><MessageCircle size={20} /> Conversar com a GPY</a>
+        </div>
+        <div className="mt-12 flex flex-col justify-between gap-6 border-t border-white/10 pt-8 text-sm text-slate-400 sm:flex-row sm:items-center"><div><strong className="text-white">GPY Soluções</strong><p className="mt-1">Tecnologia aplicada ao crescimento de empresas.</p></div><div className="flex flex-wrap gap-6"><a href="/" className="hover:text-white">Site institucional</a><a href="/desenvolvimento-de-sites" className="hover:text-white">Desenvolvimento de sites</a><a href="mailto:gpysolucoes@gmail.com" className="flex items-center gap-2 hover:text-white"><Mail size={15} /> gpysolucoes@gmail.com</a><a href="/#contato" className="flex items-center gap-1 font-bold text-blue-400 hover:text-blue-300">Contato <ArrowRight size={15} /></a></div></div>
+      </div>
+    </footer>
+  );
+}

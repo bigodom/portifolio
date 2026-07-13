@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 const Home = lazy(() => import('./pages/Home'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./components/BlogPost'));
+const Sites = lazy(() => import('./pages/Sites'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Componente de loading
@@ -21,6 +22,22 @@ const router = createBrowserRouter(
       element: (
         <Suspense fallback={<Loading />}>
           <Home />
+        </Suspense>
+      ),
+    },
+    {
+      path: '/desenvolvimento-de-sites',
+      element: (
+        <Suspense fallback={<Loading />}>
+          <Sites />
+        </Suspense>
+      ),
+    },
+    {
+      path: '/sites',
+      element: (
+        <Suspense fallback={<Loading />}>
+          <Sites />
         </Suspense>
       ),
     },
