@@ -18,5 +18,5 @@ declare module '*.md' {
   const ReactComponent: React.VFC;
 
   // Modify below per your usage
-  export { attributes, toc, html, ReactComponent };
+  export { attributes, toc, html, raw, ReactComponent };
 }

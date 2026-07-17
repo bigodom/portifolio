@@ -15,6 +15,15 @@ interface BlogPostProps {
   readingTime?: string; // Opcional, se você quiser calcular depois
 }
 
+interface ParsedPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  category: string;
+  content: string;
+}
+
 export default function BlogPost({ content, title, date, category, readingTime }: BlogPostProps) {
   // Quando usado como página (rota), carregamos o post pelo id
   const params = useParams();
@@ -47,7 +56,7 @@ export default function BlogPost({ content, title, date, category, readingTime }
         date: frontMatter.date ?? '',
         category: frontMatter.category ?? '',
         content: body,
-      } as any;
+      } satisfies ParsedPost;
     });
 
     const found = parsed.find((p) => p.id === params.id);

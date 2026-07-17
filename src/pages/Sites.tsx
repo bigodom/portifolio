@@ -1,35 +1,50 @@
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type ComponentType } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
+  ArrowDown,
   ArrowRight,
-  BarChart3,
-  CheckCircle2,
+  Check,
+  Code2,
   Gauge,
-  LayoutTemplate,
+  Layers3,
   Menu,
   MessageCircle,
-  MousePointerClick,
+  MousePointer2,
   Search,
   ShieldCheck,
-  Smartphone,
   Sparkles,
   Target,
   X,
+  Zap,
 } from "lucide-react";
-import { useState } from "react";
 import icon from "../assets/logologo_a4.svg";
-import Footer from "../sessions/Footer";
+import HeroDeviceShowcase from "../components/HeroDeviceShowcase";
 import WhatsAppFloating from "../components/WhatsAppFloating";
+import "./Sites.css";
 
-const whatsappUrl = "https://wa.me/5531992218398?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20um%20site%20profissional.";
+gsap.registerPlugin(ScrollTrigger);
 
-const portfolioItems = [
-  { title: "Projeto de Site 01", category: "Site institucional", accent: "from-blue-600 to-cyan-400" },
-  { title: "Projeto de Site 02", category: "Landing page", accent: "from-violet-600 to-fuchsia-400" },
-  { title: "Projeto de Site 03", category: "Site profissional", accent: "from-emerald-600 to-teal-400" },
-  { title: "Projeto de Site 04", category: "Experiência digital", accent: "from-orange-500 to-rose-500" },
+const whatsappUrl = "https://wa.me/5531992218398?text=Ol%C3%A1!%20Quero%20transformar%20minha%20presen%C3%A7a%20digital%20com%20um%20site%20profissional.";
+
+type Feature = { icon: ComponentType<{ size?: number }>; title: string; text: string; label: string };
+
+const features: Feature[] = [
+  { icon: Target, label: "01 · Estratégia", title: "Uma jornada que conduz", text: "Conteúdo, hierarquia e chamadas pensados para transformar atenção em conversa." },
+  { icon: Layers3, label: "02 · Experiência", title: "Design com intenção", text: "Uma identidade digital marcante, coerente com a sua marca e fácil de navegar." },
+  { icon: Gauge, label: "03 · Performance", title: "Velocidade que retém", text: "Código enxuto e experiência fluida para o cliente não desistir antes de conhecer você." },
+  { icon: Search, label: "04 · Visibilidade", title: "Base pronta para SEO", text: "Estrutura semântica e fundamentos técnicos para sua empresa ser encontrada." },
+];
+
+const process = [
+  ["01", "Imersão", "Entendemos seu negócio, seu cliente e o que precisa acontecer depois de cada visita."],
+  ["02", "Direção", "Organizamos mensagem, conteúdo e identidade em uma experiência visual única."],
+  ["03", "Construção", "Desenvolvemos, animamos e adaptamos cada detalhe para todas as telas."],
+  ["04", "Entrega", "Validamos, publicamos e entregamos uma presença digital pronta para crescer."],
 ];
 
 export default function Sites() {
+  const pageRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -39,8 +54,8 @@ export default function Sites() {
     const previousDescription = description?.getAttribute("content") ?? "";
     const previousCanonical = canonical?.getAttribute("href") ?? "";
 
-    document.title = "Desenvolvimento de Sites Profissionais | GPY Soluções";
-    description?.setAttribute("content", "Sites profissionais, rápidos, responsivos e pensados para transformar visitantes em oportunidades para sua empresa.");
+    document.title = "Sites que impressionam e convertem | GPY Soluções";
+    description?.setAttribute("content", "Sites profissionais com estratégia, design marcante, alta performance e experiência impecável em desktop e mobile.");
     canonical?.setAttribute("href", "https://gpysolucoes.com.br/desenvolvimento-de-sites");
 
     return () => {
@@ -50,154 +65,206 @@ export default function Sites() {
     };
   }, []);
 
+  useLayoutEffect(() => {
+    const page = pageRef.current;
+    if (!page) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) return;
+
+    const context = gsap.context(() => {
+      gsap.from("[data-hero-copy] > *", { y: 42, opacity: 0, duration: 0.9, stagger: 0.11, ease: "power3.out" });
+      gsap.from("[data-hero-device]", { y: 70, rotationY: -12, opacity: 0, duration: 1.25, delay: 0.25, ease: "power3.out" });
+
+      gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {
+        gsap.from(element, {
+          y: 55,
+          opacity: 0,
+          duration: 0.9,
+          ease: "power3.out",
+          scrollTrigger: { trigger: element, start: "top 86%", once: true },
+        });
+      });
+
+      gsap.utils.toArray<HTMLElement>("[data-feature]").forEach((card, index) => {
+        gsap.from(card, {
+          y: 70,
+          opacity: 0,
+          rotateX: 8,
+          duration: 0.8,
+          delay: index * 0.06,
+          ease: "power3.out",
+          scrollTrigger: { trigger: card.parentElement, start: "top 78%", once: true },
+        });
+      });
+
+      gsap.to("[data-orbit-one]", { yPercent: -25, xPercent: 12, ease: "none", scrollTrigger: { trigger: page, start: "top top", end: "bottom bottom", scrub: 1.2 } });
+      gsap.to("[data-orbit-two]", { yPercent: 38, xPercent: -18, ease: "none", scrollTrigger: { trigger: page, start: "top top", end: "bottom bottom", scrub: 1.4 } });
+    }, page);
+
+    return () => context.revert();
+  }, []);
+
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/85 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <a href="/" className="flex items-center gap-3" aria-label="Voltar para a página inicial da GPY Soluções">
-            <img src={icon} alt="" className="h-10 w-10" />
-            <span className="text-xl font-bold">GPY<span className="text-blue-500">Soluções</span></span>
-          </a>
-          <nav className="hidden items-center gap-8 md:flex" aria-label="Navegação da página de sites">
-            <a href="#diferenciais" className="text-sm text-slate-300 transition hover:text-white">Diferenciais</a>
-            <a href="#portfolio-sites" className="text-sm text-slate-300 transition hover:text-white">Portfólio</a>
-            <a href="#processo" className="text-sm text-slate-300 transition hover:text-white">Como funciona</a>
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="rounded-full bg-blue-600 px-5 py-3 text-sm font-bold transition hover:bg-blue-500">Solicitar orçamento</a>
-          </nav>
-          <button className="rounded-lg p-2 md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} aria-expanded={menuOpen}>
-            {menuOpen ? <X /> : <Menu />}
-          </button>
-        </div>
+    <div className="sites-page" ref={pageRef}>
+      <div className="sites-orb sites-orb--one" data-orbit-one aria-hidden="true" />
+      <div className="sites-orb sites-orb--two" data-orbit-two aria-hidden="true" />
+
+      <header className="sites-nav">
+        <a href="/" className="sites-brand" aria-label="GPY Soluções — página inicial">
+          <img src={icon} alt="" />
+          <span>GPY <b>Soluções</b></span>
+        </a>
+        <nav className="sites-nav__links" aria-label="Navegação da página">
+          <a href="#entregas">Entregas</a>
+          <a href="#case">Case</a>
+          <a href="#processo">Processo</a>
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="sites-button sites-button--small">Começar projeto <ArrowRight size={16} /></a>
+        </nav>
+        <button className="sites-menu-button" onClick={() => setMenuOpen((value) => !value)} aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} aria-expanded={menuOpen}>
+          {menuOpen ? <X /> : <Menu />}
+        </button>
         {menuOpen && (
-          <nav className="flex flex-col gap-4 border-t border-white/10 bg-slate-950 px-6 py-5 md:hidden">
-            <a href="#diferenciais" onClick={() => setMenuOpen(false)}>Diferenciais</a>
-            <a href="#portfolio-sites" onClick={() => setMenuOpen(false)}>Portfólio</a>
-            <a href="#processo" onClick={() => setMenuOpen(false)}>Como funciona</a>
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="rounded-xl bg-blue-600 px-5 py-3 text-center font-bold">Solicitar orçamento</a>
+          <nav className="sites-mobile-menu" aria-label="Navegação mobile">
+            <a href="#entregas" onClick={() => setMenuOpen(false)}>Entregas</a>
+            <a href="#case" onClick={() => setMenuOpen(false)}>Case</a>
+            <a href="#processo" onClick={() => setMenuOpen(false)}>Processo</a>
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Começar projeto <ArrowRight size={17} /></a>
           </nav>
         )}
       </header>
 
       <main>
-        <section className="relative overflow-hidden px-6 pb-24 pt-36 sm:pt-44">
-          <div className="absolute left-1/2 top-16 -z-0 h-[520px] w-[800px] -translate-x-1/2 rounded-full bg-blue-600/20 blur-[130px]" />
-          <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1.05fr_.95fr]">
+        <section className="sites-hero">
+          <div className="sites-shell sites-hero__grid">
+            <div className="sites-hero__copy" data-hero-copy>
+              <div className="sites-kicker"><span /> Sites sob medida para marcas ambiciosas</div>
+              <h1>Seu próximo cliente vai <em>sentir</em> a diferença.</h1>
+              <p>Criamos experiências digitais que prendem a atenção, comunicam valor e fazem sua empresa parecer tão boa quanto ela realmente é.</p>
+              <div className="sites-hero__actions">
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="sites-button">Quero elevar minha marca <ArrowRight size={19} /></a>
+                <a href="#case" className="sites-text-link">Explorar uma entrega <ArrowDown size={18} /></a>
+              </div>
+              <div className="sites-proof">
+                <span><Check size={15} /> Design exclusivo</span>
+                <span><Check size={15} /> Mobile first</span>
+                <span><Check size={15} /> SEO técnico</span>
+              </div>
+            </div>
+            <div data-hero-device className="sites-hero__visual">
+              <HeroDeviceShowcase mode="hero" />
+            </div>
+          </div>
+          <div className="sites-scroll-hint"><span /> Role para descobrir</div>
+        </section>
+
+        <section className="sites-statement" aria-label="Nossa proposta">
+          <div className="sites-marquee" aria-hidden="true">
+            <span>ESTRATÉGIA • DESIGN • TECNOLOGIA • RESULTADO • </span>
+            <span>ESTRATÉGIA • DESIGN • TECNOLOGIA • RESULTADO • </span>
+          </div>
+          <div className="sites-shell sites-statement__content" data-reveal>
+            <span className="sites-index">01 / O que muda</span>
+            <p>Não entregamos apenas páginas.<br />Entregamos <strong>presença, percepção e confiança.</strong></p>
+          </div>
+        </section>
+
+        <section id="case" className="sites-case">
+          <div className="sites-shell sites-case__intro" data-reveal>
             <div>
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-2 text-sm font-semibold text-blue-300">
-                <Sparkles size={16} /> Sites que trabalham pelo crescimento da sua empresa
-              </div>
-              <h1 className="max-w-4xl text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl">
-                Seu site precisa <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">atrair clientes</span>, não apenas existir.
-              </h1>
-              <p className="mt-7 max-w-2xl text-lg leading-relaxed text-slate-300 sm:text-xl">
-                A GPY cria sites profissionais que comunicam valor, carregam rápido e conduzem o visitante até o contato — em qualquer tamanho de tela.
-              </p>
-              <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-7 py-4 font-bold shadow-lg shadow-blue-600/25 transition hover:-translate-y-0.5 hover:bg-blue-500">
-                  Quero um site que gere oportunidades <ArrowRight size={19} />
-                </a>
-                <a href="#portfolio-sites" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-4 font-semibold transition hover:bg-white/10">
-                  Ver sites desenvolvidos
-                </a>
-              </div>
-              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-300">
-                <span className="flex items-center gap-2"><CheckCircle2 size={17} className="text-emerald-400" />Design responsivo</span>
-                <span className="flex items-center gap-2"><CheckCircle2 size={17} className="text-emerald-400" />Alta performance</span>
-                <span className="flex items-center gap-2"><CheckCircle2 size={17} className="text-emerald-400" />Estrutura preparada para SEO</span>
-              </div>
+              <span className="sites-index">02 / Entrega em destaque</span>
+              <h2>Um projeto.<br /><em>Duas experiências.</em></h2>
             </div>
+            <p>O site Olhar de Rei foi desenhado para ser envolvente no desktop e absolutamente natural no celular — sem perder identidade, clareza ou velocidade.</p>
+          </div>
 
-            <div className="relative mx-auto w-full max-w-xl">
-              <div className="rounded-[2rem] border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur-md">
-                <div className="overflow-hidden rounded-[1.4rem] bg-white text-slate-900">
-                  <div className="flex items-center gap-2 border-b border-slate-200 px-5 py-4"><span className="h-3 w-3 rounded-full bg-rose-400" /><span className="h-3 w-3 rounded-full bg-amber-400" /><span className="h-3 w-3 rounded-full bg-emerald-400" /><div className="ml-3 h-7 flex-1 rounded-full bg-slate-100" /></div>
-                  <div className="grid min-h-[390px] content-center bg-gradient-to-br from-slate-50 to-blue-50 p-8 sm:p-12">
-                    <span className="mb-5 h-3 w-28 rounded-full bg-blue-600" />
-                    <div className="mb-4 h-8 w-full rounded-lg bg-slate-900" />
-                    <div className="mb-7 h-8 w-4/5 rounded-lg bg-slate-900" />
-                    <div className="mb-3 h-3 w-full rounded bg-slate-300" />
-                    <div className="mb-8 h-3 w-3/4 rounded bg-slate-300" />
-                    <div className="h-12 w-44 rounded-full bg-blue-600" />
-                  </div>
-                </div>
-              </div>
-              <div className="absolute -bottom-7 -left-4 rounded-2xl border border-white/10 bg-slate-900/95 p-4 shadow-xl sm:-left-10">
-                <div className="flex items-center gap-3"><div className="rounded-xl bg-emerald-500/15 p-3 text-emerald-400"><Gauge /></div><div><strong className="block text-lg">Experiência rápida</strong><span className="text-xs text-slate-400">Pensada para não perder visitas</span></div></div>
-              </div>
-            </div>
+          <div className="sites-shell sites-case__stage" data-reveal>
+            <HeroDeviceShowcase mode="responsive" />
+            <div className="sites-case__caption sites-case__caption--left"><span>Desktop</span><strong>Imersivo</strong></div>
+            <div className="sites-case__caption sites-case__caption--right"><span>Mobile</span><strong>Intuitivo</strong></div>
+          </div>
+
+          <div className="sites-shell sites-case__metrics" data-reveal>
+            <div><strong>100%</strong><span>Responsivo</span></div>
+            <div><strong>SEO</strong><span>Estrutura preparada</span></div>
+            <div><strong>UX</strong><span>Jornada objetiva</span></div>
+            <div><strong>24/7</strong><span>Sua marca trabalhando</span></div>
           </div>
         </section>
 
-        <section id="diferenciais" className="bg-white px-6 py-24 text-slate-900">
-          <div className="mx-auto max-w-7xl">
-            <div className="mx-auto mb-14 max-w-3xl text-center">
-              <span className="font-bold uppercase tracking-[.2em] text-blue-600">O diferencial GPY</span>
-              <h2 className="mt-4 text-3xl font-extrabold sm:text-5xl">Cada detalhe é pensado para transformar atenção em ação.</h2>
-              <p className="mt-5 text-lg text-slate-600">Um site eficiente combina estratégia, clareza, tecnologia e uma ótima experiência para o visitante.</p>
+        <section id="entregas" className="sites-deliveries">
+          <div className="sites-shell">
+            <div className="sites-section-heading" data-reveal>
+              <span className="sites-index">03 / O que entregamos</span>
+              <h2>Cada detalhe tem<br />um <em>porquê.</em></h2>
+              <p>Beleza atrai. Estratégia mantém. Performance converte.</p>
             </div>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {[
-                [Target, "Foco em conversão", "Organizamos conteúdo, argumentos e chamadas para facilitar o próximo passo do cliente."],
-                [Gauge, "Alto desempenho", "Páginas leves e otimizadas para carregar com rapidez e reduzir abandonos."],
-                [Smartphone, "Mobile de verdade", "A experiência é planejada para celulares, tablets e computadores, sem adaptações improvisadas."],
-                [Search, "Preparado para o Google", "Estrutura semântica, conteúdo organizado e fundamentos técnicos para uma estratégia de SEO."],
-                [ShieldCheck, "Tecnologia confiável", "Construção moderna, segura e preparada para crescer junto com o negócio."],
-                [MousePointerClick, "Jornada clara", "Navegação objetiva para o visitante entender a oferta e encontrar o contato rapidamente."],
-              ].map(([Icon, title, text]) => {
-                const IconComponent = Icon as typeof Target;
-                return <div key={title as string} className="rounded-3xl border border-slate-200 bg-slate-50 p-7 transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl"><div className="mb-5 inline-flex rounded-2xl bg-blue-600 p-3 text-white"><IconComponent /></div><h3 className="mb-3 text-xl font-bold">{title as string}</h3><p className="leading-relaxed text-slate-600">{text as string}</p></div>;
-              })}
-            </div>
-          </div>
-        </section>
-
-        <section id="portfolio-sites" className="px-6 py-24">
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-              <div className="max-w-3xl"><span className="font-bold uppercase tracking-[.2em] text-blue-400">Sites desenvolvidos</span><h2 className="mt-4 text-3xl font-extrabold sm:text-5xl">Projetos criados para marcas que querem crescer.</h2></div>
-              <p className="max-w-md text-slate-400">Esta vitrine está preparada para receber as imagens, informações e links dos quatro sites já desenvolvidos pela GPY.</p>
-            </div>
-            <div className="grid gap-8 md:grid-cols-2">
-              {portfolioItems.map((project, index) => (
-                <article key={project.title} className="group overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-blue-400/40">
-                  <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${project.accent} p-5 sm:p-8`}>
-                    <div className="h-full overflow-hidden rounded-2xl bg-white shadow-2xl transition duration-500 group-hover:-translate-y-2 group-hover:scale-[1.02]">
-                      <div className="flex items-center gap-2 border-b border-slate-200 px-4 py-3"><span className="h-2.5 w-2.5 rounded-full bg-rose-400" /><span className="h-2.5 w-2.5 rounded-full bg-amber-400" /><span className="h-2.5 w-2.5 rounded-full bg-emerald-400" /><span className="ml-2 h-5 flex-1 rounded-full bg-slate-100" /></div>
-                      <div className="grid h-full place-items-center bg-slate-50 text-center text-slate-400"><div><LayoutTemplate className="mx-auto mb-3" size={38} /><span className="text-sm font-semibold">Imagem do projeto {String(index + 1).padStart(2, "0")}</span></div></div>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between gap-4 p-6 sm:p-8"><div><span className="text-sm font-semibold text-blue-400">{project.category}</span><h3 className="mt-1 text-2xl font-bold">{project.title}</h3></div><span className="rounded-full border border-white/15 p-3 text-slate-300"><ArrowRight /></span></div>
+            <div className="sites-feature-grid">
+              {features.map(({ icon: Icon, label, title, text }) => (
+                <article className="sites-feature" data-feature key={title}>
+                  <div className="sites-feature__top"><span>{label}</span><Icon size={23} /></div>
+                  <div><h3>{title}</h3><p>{text}</p></div>
+                  <ArrowRight className="sites-feature__arrow" size={22} />
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="processo" className="bg-slate-900 px-6 py-24">
-          <div className="mx-auto max-w-7xl">
-            <div className="mx-auto mb-14 max-w-3xl text-center"><span className="font-bold uppercase tracking-[.2em] text-blue-400">Do planejamento à publicação</span><h2 className="mt-4 text-3xl font-extrabold sm:text-5xl">Um processo claro, sem complicação.</h2></div>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {[
-                ["01", "Diagnóstico", "Entendemos seu negócio, público, objetivos e diferenciais."],
-                ["02", "Estratégia", "Definimos a estrutura, a mensagem e os caminhos de conversão."],
-                ["03", "Design e desenvolvimento", "Criamos a experiência visual e transformamos tudo em um site rápido e responsivo."],
-                ["04", "Publicação", "Revisamos os detalhes, colocamos o site no ar e orientamos os próximos passos."],
-              ].map(([number, title, text]) => <div key={number} className="rounded-3xl border border-white/10 bg-white/5 p-7"><span className="text-4xl font-black text-blue-500">{number}</span><h3 className="mb-3 mt-6 text-xl font-bold">{title}</h3><p className="leading-relaxed text-slate-400">{text}</p></div>)}
+        <section className="sites-performance">
+          <div className="sites-shell sites-performance__grid">
+            <div className="sites-performance__visual" data-reveal>
+              <div className="sites-score-ring"><div><strong>95+</strong><span>Performance</span></div></div>
+              <div className="sites-code-card"><Code2 size={19} /><span>Construído para ser rápido</span><i /></div>
+              <div className="sites-speed-card"><Zap size={19} /><span>Experiência instantânea</span></div>
+            </div>
+            <div className="sites-performance__copy" data-reveal>
+              <span className="sites-index">04 / Por baixo do design</span>
+              <h2>Bonito por fora.<br /><em>Brilhante por dentro.</em></h2>
+              <p>O impacto visual só funciona quando a tecnologia acompanha. Por isso, cada entrega nasce preparada para carregar rápido, funcionar bem e evoluir com o seu negócio.</p>
+              <ul>
+                <li><Gauge size={20} /> Performance e carregamento otimizado</li>
+                <li><ShieldCheck size={20} /> Tecnologia moderna e confiável</li>
+                <li><MousePointer2 size={20} /> Interações que orientam sem distrair</li>
+              </ul>
             </div>
           </div>
         </section>
 
-        <section className="bg-white px-6 py-24 text-slate-900">
-          <div className="mx-auto max-w-5xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-blue-700 to-blue-500 px-7 py-14 text-center text-white shadow-2xl sm:px-16 sm:py-20">
-            <BarChart3 className="mx-auto mb-6" size={44} />
-            <h2 className="text-3xl font-extrabold sm:text-5xl">Transforme seu site em uma ferramenta de vendas.</h2>
-            <p className="mx-auto mt-5 max-w-2xl text-lg text-blue-100">Conte para a GPY o que sua empresa precisa. Vamos planejar uma presença digital profissional, rápida e preparada para gerar oportunidades.</p>
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="mt-9 inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-bold text-blue-700 transition hover:-translate-y-0.5 hover:bg-blue-50"><MessageCircle size={20} /> Solicitar orçamento pelo WhatsApp</a>
+        <section id="processo" className="sites-process">
+          <div className="sites-shell">
+            <div className="sites-section-heading sites-section-heading--horizontal" data-reveal>
+              <div><span className="sites-index">05 / Processo</span><h2>Da primeira ideia<br />ao primeiro <em>clique.</em></h2></div>
+              <p>Você acompanha cada decisão. Nós cuidamos da complexidade.</p>
+            </div>
+            <div className="sites-process__list">
+              {process.map(([number, title, text]) => (
+                <article key={number} data-reveal>
+                  <span>{number}</span><h3>{title}</h3><p>{text}</p><div className="sites-process__line" />
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="sites-cta">
+          <div className="sites-shell sites-cta__inner" data-reveal>
+            <Sparkles className="sites-cta__spark" size={34} />
+            <span className="sites-index">Seu próximo passo</span>
+            <h2>Vamos criar algo que<br /><em>ninguém esquece?</em></h2>
+            <p>Conte sua ideia. A GPY transforma em uma experiência digital à altura da sua marca.</p>
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="sites-button sites-button--light"><MessageCircle size={20} /> Conversar sobre meu projeto</a>
           </div>
         </section>
       </main>
 
-      <Footer />
+      <footer className="sites-footer">
+        <div className="sites-shell sites-footer__inner">
+          <a href="/" className="sites-brand"><img src={icon} alt="" /><span>GPY <b>Soluções</b></span></a>
+          <p>Estratégia, design e tecnologia para marcas que querem ser lembradas.</p>
+          <div><a href="mailto:gpysolucoes@gmail.com">gpysolucoes@gmail.com</a><span>© {new Date().getFullYear()} GPY Soluções</span></div>
+        </div>
+      </footer>
+
       <WhatsAppFloating />
     </div>
   );
