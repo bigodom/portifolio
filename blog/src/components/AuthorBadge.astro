@@ -1,0 +1,4 @@
+---
+const { author = 'Pedro Henrique', compact = false } = Astro.props;
+---
+<span class:list={['author-badge', { compact }]}><img src="/blog/author.png" alt={`Avatar de ${author}`} width="36" height="36" loading="lazy" /><span><strong>{author}</strong>{!compact && <small>GPY Soluções</small>}</span></span>

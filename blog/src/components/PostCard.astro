@@ -1,0 +1,19 @@
+---
+import CategoryBadge from './CategoryBadge.astro';
+import AuthorBadge from './AuthorBadge.astro';
+import ReadingTime from './ReadingTime.astro';
+import { formatDate, readingTime } from '../lib/posts';
+const { post } = Astro.props;
+---
+<article class="post-card">
+  <a class="card-cover" href={`/blog/${post.id}/`} aria-label={`Ler ${post.data.title}`}>
+    <img src={post.data.cover} alt={post.data.coverAlt} width="720" height="420" loading="lazy" />
+    <span class="card-arrow" aria-hidden="true">↗</span>
+  </a>
+  <div class="card-content">
+    <CategoryBadge category={post.data.category} />
+    <h3><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3>
+    <p>{post.data.description}</p>
+    <div class="card-meta"><AuthorBadge author={post.data.author} compact /><span>{formatDate(post.data.publishedAt)} · <ReadingTime minutes={readingTime(post.body)} /></span></div>
+  </div>
+</article>

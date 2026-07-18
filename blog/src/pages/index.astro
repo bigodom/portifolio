@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEOHead from '../components/SEOHead.astro';
+import FeaturedPost from '../components/FeaturedPost.astro';
+import PostCard from '../components/PostCard.astro';
+import ServiceCTA from '../components/ServiceCTA.astro';
+import { publishedPosts, absoluteUrl } from '../lib/posts';
+const posts = publishedPosts(await getCollection('blog'));
+const featured = posts.find((p) => p.data.featured) ?? posts[0];
+const others = posts.filter((p) => p.id !== featured?.id);
+const categories = [...new Set(posts.map((p) => p.data.category))];
+const blogLd = { '@context': 'https://schema.org', '@type': 'Blog', name: 'Blog GPY Soluções', url: absoluteUrl('/blog/'), description: 'Experiências reais construindo software, automatizando processos e transformando problemas em produtos digitais.', publisher: { '@type': 'Organization', name: 'GPY Soluções' }, blogPost: posts.map((p) => ({ '@type': 'BlogPosting', headline: p.data.title, url: absoluteUrl(`/blog/${p.id}/`), datePublished: p.data.publishedAt.toISOString() })) };
+---
+<BaseLayout>
+  <SEOHead slot="head" title="Blog GPY Soluções | Software, automação e negócios" description="Experiências reais, decisões técnicas e aprendizados construindo software, automatizando processos e criando produtos digitais." canonicalPath="/blog/" jsonLd={blogLd} />
+  <section class="blog-intro shell">
+    <div><span class="eyebrow">Tecnologia sem abstração</span><h1>Ideias que saíram do papel — e o que aprendemos no caminho.</h1></div>
+    <div><p>Experiências reais construindo software, automatizando processos e transformando problemas em produtos digitais.</p><a class="institutional-link" href="/">Conheça a GPY Soluções <span>↗</span></a></div>
+  </section>
+  {featured && <section class="shell"><FeaturedPost post={featured} /></section>}
+  <section id="artigos" class="articles-section shell">
+    <div class="section-heading"><div><span class="eyebrow">Biblioteca GPY</span><h2>Aprendizados para construir melhor</h2></div><span>{posts.length} artigos publicados</span></div>
+    <div class="category-list" aria-label="Categorias">{categories.map((category) => <span>{category}</span>)}</div>
+    <div class="post-grid">{others.slice(0, 3).map((post) => <PostCard post={post} />)}</div>
+    <ServiceCTA />
+    <div class="post-grid">{others.slice(3).map((post) => <PostCard post={post} />)}</div>
+  </section>
+</BaseLayout>

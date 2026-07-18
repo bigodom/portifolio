@@ -1,0 +1,2 @@
+import { getCollection } from 'astro:content'; import { publishedPosts, absoluteUrl } from '../lib/posts';
+export async function GET() { const posts = publishedPosts(await getCollection('blog')); const urls = ['/blog/', ...posts.map((p) => `/blog/${p.id}/`)]; const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.map((url) => `\n  <url><loc>${absoluteUrl(url)}</loc></url>`).join('')}\n</urlset>`; return new Response(xml, { headers: { 'Content-Type': 'application/xml; charset=utf-8' } }); }

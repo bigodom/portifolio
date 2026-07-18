@@ -1,0 +1,23 @@
+---
+import BlogHeader from '../components/BlogHeader.astro';
+import BlogFooter from '../components/BlogFooter.astro';
+import '../styles/global.css';
+const { lang = 'pt-BR' } = Astro.props;
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#080316" />
+    <link rel="icon" href="/blog/favicon.png" type="image/png" />
+    <link rel="alternate" type="application/rss+xml" title="Blog GPY Soluções" href="/blog/rss.xml" />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <BlogHeader />
+    <main id="conteudo"><slot /></main>
+    <BlogFooter />
+  </body>
+</html>

@@ -1,0 +1,5 @@
+---
+type Heading = { depth: number; slug: string; text: string };
+const { headings = [] } = Astro.props as { headings: Heading[] };
+---
+{headings.length > 2 && <aside class="toc"><strong>Neste artigo</strong><ol>{headings.filter((h) => h.depth === 2).map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol></aside>}

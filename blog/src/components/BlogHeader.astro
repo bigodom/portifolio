@@ -1,0 +1,33 @@
+---
+const links = [
+  ['Início', '/blog'], ['Artigos', '/blog/#artigos'], ['Serviços', '/#servicos'], ['Sobre', '/#sobre'],
+];
+---
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href="/blog" aria-label="GPY Soluções — Blog">
+      <img src="/blog/logo.svg" alt="" width="42" height="42" />
+      <span>GPY<strong>Soluções</strong><small>Blog</small></span>
+    </a>
+    <nav aria-label="Navegação principal">
+      {links.map(([label, href]) => <a href={href}>{label}</a>)}
+    </nav>
+    <a class="button button-small header-cta" href="https://wa.me/5531992218398?text=Olá%2C%20quero%20falar%20sobre%20um%20projeto" target="_blank" rel="noreferrer">Falar sobre um projeto</a>
+    <button class="menu-button" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+  </div>
+  <div id="mobile-menu" class="mobile-menu" hidden>
+    {links.map(([label, href]) => <a href={href}>{label}</a>)}
+    <a href="/">Voltar ao site institucional</a>
+    <a class="button" href="https://wa.me/5531992218398?text=Olá%2C%20quero%20falar%20sobre%20um%20projeto">Falar sobre um projeto</a>
+  </div>
+</header>
+<script is:inline>
+  const button = document.querySelector('.menu-button');
+  const menu = document.querySelector('#mobile-menu');
+  button?.addEventListener('click', () => {
+    const open = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!open));
+    button.setAttribute('aria-label', open ? 'Abrir menu' : 'Fechar menu');
+    if (menu) menu.hidden = open;
+  });
+</script>

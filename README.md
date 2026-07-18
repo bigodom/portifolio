@@ -1,5 +1,17 @@
 # React + TypeScript + Vite
 
+## Blog Astro em `/blog`
+
+O site institucional continua em React/Vite e o blog fica isolado em `blog/`, com geração estática pelo Astro.
+
+- `npm run dev` inicia o site institucional.
+- `npm run dev:blog` inicia o blog em `http://localhost:4321/blog`.
+- `npm run build` compila os dois projetos e reúne tudo em `dist/`.
+
+O build final preserva as rotas do site institucional e publica o blog em `dist/blog/`. Para publicar no Cloudflare, use o mesmo fluxo atual apontando o diretório de assets para `dist`; o `wrangler.jsonc` já está preparado para servir os HTMLs estáticos, a 404 mais próxima e as rotas amigáveis.
+
+Novos artigos devem ser criados em `blog/src/content/blog/` com o schema definido em `blog/src/content.config.ts`. Artigos com `draft: true` ficam fora do build de produção.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

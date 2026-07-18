@@ -1,0 +1,6 @@
+---
+const { title, url } = Astro.props;
+const encodedUrl = encodeURIComponent(url); const encodedTitle = encodeURIComponent(title);
+---
+<div class="share-buttons" aria-label="Compartilhar artigo"><span>Compartilhar</span><a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`} target="_blank" rel="noreferrer" aria-label="Compartilhar no LinkedIn">in</a><a href={`https://wa.me/?text=${encodedTitle}%20${encodedUrl}`} target="_blank" rel="noreferrer" aria-label="Compartilhar no WhatsApp">wa</a><button type="button" data-copy-url={url} aria-label="Copiar link">⌁</button></div>
+<script is:inline>document.querySelectorAll('[data-copy-url]').forEach((button) => button.addEventListener('click', async () => { await navigator.clipboard.writeText(button.dataset.copyUrl); button.textContent = '✓'; setTimeout(() => button.textContent = '⌁', 1500); }));</script>
